@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Internal CSS -->
+    <link href="../stylesheet/style.css" rel="stylesheet" type="text/css">
+    
+    <title>Home page</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:deepskyblue;">
+        <a class="navbar-brand" href="#" >
+            <img src="../images/logo.png" width="300" height="55" class="d-inline-block align-top" style="margin: 10px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="nav justify-content-end">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">about</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contactus">contact</a>
+                </li>
+                <form style="margin-left: 10px;" method="POST" action="/signin">
+                    <input type="text" style="border-radius: 2px;" placeholder="Username">
+                    <input type="password" placeholder="Password" style="border-radius: 2px;">
+                    <button type="submit" style="border-radius: 5px;">Submit</button>
+                </form>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="5000">
+                    <img src="../images/jesse-orrico-rmWtVQN5RzU-unsplash.jpg" class="d-block w-100" alt="..." style="opacity: 0.6; width: 100%; height: 640px;">
+                    <div class="carousel-content">
+                        <img src="../images/image-slider-2.png" style="width: 650px;">
+                    </div>
+                    <div class="carousel-content" style="bottom: 100px;left: 53%; font-size: 2rem; color:rgba(15,15,15,.6); text-transform: uppercase;">    
+                        <p style="font-size: 2.2rem; font-weight: bold;">Take our free consultancy <br>services online.</p>
+                        <br><p><h6 style="margin-top:-30px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: .9rem;">Our organisation helps the basic need of the people, free consultancy to all of those who are in need.</h6></p>
+                        <img src="../images/IMG-20191127-WA0110.jpg" style="width: 15%;margin-top: 30px; border-radius: 500px;">
+                        <span><img src="../images/IMG-20191018-WA0025.jpg" style="width: 15%;margin-top: 30px; margin-left: 30px; border-radius: 500px;"></span>
+                        <br><br><button type="button" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">MAKE APPOINMENT</button>
+                    </div>    
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../images/jesse-orrico-rmWtVQN5RzU-unsplash.jpg" class="d-block w-100" alt="..." style="opacity: 0.6; width: 100%; height: 640px;">
+                    <div class="carousel-content">
+                        <img src="../images/image-slider.png" style="width: 450px; margin-left: 100px;">
+                    </div>
+                    <div class="carousel-content" style="bottom: 100px;left: 53%; font-size: 2rem; color:rgba(15,15,15,.6); text-transform: uppercase;">    
+                        <p style="font-size: 2.2rem; font-weight: bold;">These are our facilities.</p>
+                        <br><p><h6 style="margin-top:-30px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> Free consultancy at any time and any place.</h6></p>
+                        <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> No paper work required at our side.</h6></p>
+                        <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> Customer satisfaction 24*7 available.</h6></p>
+                        <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> Found your nearby hospotals and their doctors in one go.</h6></p>
+                        <br><br><button type="button" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">MAKE APPOINMENT</button>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+            <div class="col-md-3" style="height: 200px; background-color:#263b51;">
+                <p style="margin-top: 55px;margin-left: 100px; font-weight: bolder; color: white;font-size: 2rem;">MAKE AN <br> APPOINMENT</p>
+            </div>
+            <div class="col-md-9" style="background-color: #008fd5;">
+                <form> 
+                    <div class="form-row" style="margin: 40px;">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Full Name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Email" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="validationDefault02" placeholder="Mob No" required>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin: 40px;">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="Appoinment date" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="validationDefault04" placeholder="Doctors" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" type="submit" style="width: 300px;background-color: white;color: #263b51;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">MAKE AN APPOINMENT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row" style="height: 640px; background-color: black;">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <img src="../images/logo.png" class="myend1">
+                <p class="myend1">With Medicare system, the team here work hard to make you feel better !<br><hr style="background: white;margin-top: 70px;"></p>
+            </div>
+            <div class="col-md-3">
+                <p class="myend2" style="text-decoration: underline coral 5px;"> DOCTORS LIST</p>
+            </div>
+            <div class="col-md-3">
+                <p class="myend2" style="text-decoration: underline coral 5px;"> SERVICES</p>
+            </div>
+            <div class="col-md-3">
+                <p class="myend2" style="text-decoration: underline coral 5px;"> CONTACT INFO</p>
+            </div>    
+        </div>
+        <div class="row" style="background-color: black;">
+            <p style="color: white;"> &#169 Copyright </p>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+  </html>
+
+<style>
+    .nav-link{
+        font-size: medium;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: block;
+        font-family:Georgia, 'Times New Roman', Times, serif
+    }
+    .carousel-content{
+        position: absolute;
+        bottom: 1px;
+        z-index: 20;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0,0,0,.6);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .icon-calentar{
+        content: "\e264";
+        font-size: 42px;
+        color: #f2921e;
+        padding-bottom: 20px;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+    .myend1{
+        margin-top: 50px;
+        color: white;
+        font-size: small;
+        letter-spacing: 1px;
+        font-family: 'Lato', sans-serif;
+    }
+    .myend2{
+        margin-top: 50px;
+        margin-left: 60px;
+        color: white;
+        font-size: large;
+        letter-spacing: 1px;
+        font-family: 'Lato', sans-serif;
+    }
+</style>
