@@ -23,11 +23,8 @@ router.get('/signup', (req,res)=>{
     res.render('signup',{message:message});
 });
 
-<<<<<<< HEAD
 router.get('/about', (req,res)=>{
     res.render('about');
 })
-=======
->>>>>>> ce819162876626c8eeb8e74b6023616fcd9f3c5b
 
 module.exports = router;
