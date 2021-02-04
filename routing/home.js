@@ -15,4 +15,8 @@ router.get('/signup', (req,res)=>{
     res.render('signup',{message:message});
 });
 
+router.get('/about', (req,res)=>{
+    res.render('about');
+})
+
 module.exports = router;
