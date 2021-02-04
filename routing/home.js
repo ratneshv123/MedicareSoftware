@@ -12,6 +12,7 @@ router.get('/contactus', (req,res)=>{
 
 router.get('/about', (req, res) => {
     res.render('about'); 
+    console.log('success');
 });
 
 router.get('/signup', (req,res)=>{
