@@ -6,6 +6,10 @@ router.get('/', (req,res)=>{
     res.render('home');
 });
 
+router.get('/meranaam', (req, res) => {
+    console.log('success'); 
+});
+
 router.get('/contactus', (req,res)=>{
     res.render('contactus');
 });
