@@ -13,8 +13,10 @@ router.post('/signupform', async(req, res) => {
         firstname: req.body.ifname,
         middlename: req.body.imname,
         lastname: req.body.ilname,
-        state: req.body.istate,
+        email: req.body.iemail,
+        mobno: req.body.imobno,
         city: req.body.icity,
+        state: req.body.istate,
         zipcode: req.body.izip,
         username: req.body.iusername,
         password: req.body.ipassword
