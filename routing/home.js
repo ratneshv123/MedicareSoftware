@@ -10,16 +10,6 @@ router.get('/contactus', (req,res)=>{
     res.render('contactus');
 });
 
-router.get('/about', (req, res) => {
-    res.render('about'); 
-    console.log('success');
-});
-
-router.get('/signup', (req,res)=>{
-    var message = "";
-    res.render('signup',{message:message});
-});
-
 router.get('/about', (req,res)=>{
     res.render('about');
 })

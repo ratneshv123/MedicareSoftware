@@ -15,37 +15,38 @@
   </head>
   <body>
 
+    <% if (message.length > 0) { %>
+        <div class="alert alert-success col-sm-12" style="text-align: center;"><%= message %></div>
+    <% } %>
     <div class="container" style="border: 4px solid black; border-radius: 20px;margin-top: 50px;!important;">
-        <% if (message.length > 0) { %>
-            <div class="alert alert-success col-sm-12"><%= message %></div>
-        <% } %>
-        <form> 
+        
+        <form action="/signupform" method="post"> 
             <div class="form-row" style="margin: 40px;">
                 <div class="col-md-4">
                     <label style="font-weight: 700;" for="validationDefault01">First name</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" required>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="First name" name="ifname" required>
                 </div>
                 <div class="col-md-4">
                     <label style="font-weight: 700;" for="validationDefault01">Middle name</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="Middle name" required>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="Middle name" name="imname" >
                 </div>
                 <div class="col-md-4">
                     <label style="font-weight: 700;" for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" required>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" name="ilname" required>
                 </div>
             </div>
             <div class="form-row" style="margin: 40px;">
                 <div class="col-md-6">
                     <label style="font-weight: 700;" for="validationDefault03">City</label>
-                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                    <input type="text" class="form-control" id="validationDefault03" placeholder="City" name="icity" required>
                 </div>
                 <div class="col-md-3">
                     <label style="font-weight: 700;" for="validationDefault04">State</label>
-                    <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+                    <input type="text" class="form-control" id="validationDefault04" placeholder="State" name="istate" required>
                 </div>
                 <div class="col-md-3">
                     <label style="font-weight: 700;" for="validationDefault05">Zip</label>
-                    <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" name="izip" required>
                 </div>
             </div>
             <div class="form-row" style="margin: 40px;">
@@ -55,13 +56,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">@</span>
                         </div>
-                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+                        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" name="iusername" required>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label style="font-weight: 700;" for="validationDefaultUsername">Password</label>
+                    <label style="font-weight: 700;" for="validationDefaultUsername" >Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="validationDefaultUsername" placeholder="Password" aria-describedby="inputGroupPrepend2" required>
+                        <input type="password" class="form-control" id="validationDefaultUsername" placeholder="Password" aria-describedby="inputGroupPrepend2" name="ipassword" required>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
             </div>
         </form>
         <div>
-            <a href="/" class="mylabel">Already Loggedin</a>
+            <a href="/" class="mylabel">Log In</a>
         </div>
     </div>
 
