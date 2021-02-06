@@ -3,7 +3,8 @@ const connection = require('../db/db');
 const router = express.Router();
 
 router.get('/', (req,res)=>{
-    res.render('home');
+    var message=''
+    res.render('home', {message:message});
 });
 
 router.get('/contactus', (req,res)=>{
@@ -13,5 +14,9 @@ router.get('/contactus', (req,res)=>{
 router.get('/about', (req,res)=>{
     res.render('about');
 })
+
+router.get('/doctor', (req, res) => {
+    res.render('doctorsdetail'); 
+});
 
 module.exports = router;
