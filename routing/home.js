@@ -7,10 +7,6 @@ router.get('/', (req,res)=>{
     res.render('home', {message:message});
 });
 
-router.get('/contactus', (req,res)=>{
-    res.render('contactus');
-});
-
 router.get('/about', (req,res)=>{
     res.render('about');
 })

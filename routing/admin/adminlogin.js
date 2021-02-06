@@ -17,7 +17,7 @@ router.post('/welcomeadmin', async (req, res) => {
     };
 
     await new Promise((resolve, reject) => {
-        const query = `SELECT password FROM signin WHERE username=?`;
+        const query = `SELECT password FROM signinadmin WHERE username=?`;
         connection.query(query,user.name, (err, result) => {
             if (err) {
                 res.status(404).send(`Not Found` + err);
