@@ -51,6 +51,7 @@ router.post('/signin', async (req, res) => {
         password: req.body.ipassword
     };
     
+
         await new Promise((resolve, reject) => {
             const query = `SELECT password FROM signin WHERE username=?`;
             connection.query(query,user.name, (err, result) => {
