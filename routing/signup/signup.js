@@ -16,9 +16,6 @@ router.post('/signupform', async(req, res) => {
         lastname: req.body.ilname,
         email: req.body.iemail,
         mobno: req.body.imobno,
-        city: req.body.icity,
-        state: req.body.istate,
-        zipcode: req.body.izip,
         username: req.body.iusername,
         password: req.body.ipassword
     };
@@ -35,7 +32,11 @@ router.post('/signupform', async(req, res) => {
         const query = `INSERT INTO signin SET ?`;
         
         connection.query(query, user, (err, result)=> {
-            if (err)    reject(new Error('Something failed (Record Insertion) :'+err));
+            if (err)
+            {
+                message = "Duplicate Entry"
+                res.render('signup', {message:message});
+            }
             resolve(result);
             message = 'SignUp Successfully';
         });

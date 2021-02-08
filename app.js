@@ -5,6 +5,7 @@ const signup = require('./routing/signup/signup');
 const doctor = require('./routing/doctors/doctor');
 const adminlogin = require('./routing/admin/adminlogin');
 const inadmin = require('./routing/admin/welcomeadminoffice/inadmin');
+const inpatients = require('./routing/patients/inpatients');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -17,5 +18,6 @@ app.use(signup);
 app.use(doctor);
 app.use(adminlogin);
 app.use(inadmin);
+app.use(inpatients);
 
 app.listen(3000, ()=>console.log("Listening on port 3000"));
