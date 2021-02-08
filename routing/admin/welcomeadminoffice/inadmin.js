@@ -3,7 +3,8 @@ const connection = require('../../../db/db');
 const router = express.Router();
 
 router.get('/adddoc', (req,res)=>{
-    res.render('adddoc');
+    var message='';
+    res.render('adddoc', {message:message});
 })
 
 router.get('/viewdoc', (req,res)=>{
@@ -43,9 +44,25 @@ router.get('/updatesympt', (req,res)=>{
 
 //routes for updation/addition of doctor
 
-router.post('/addthedoctor', (req, res) => {
+router.post('/addthedoctor', async(req, res) => {
     console.log(req.body);
-    res.send('success'); 
+    const user = {
+        doctorsname: req.body.idrname,
+        doctorsaddress: req.body.idraddress,
+        doctorsfees: req.body.idrfees,
+        doctorsspeciality: req.body.ispeciality
+    };
+
+    await new Promise((resolve, reject) => {
+        const query = `INSERT INTO doctors SET ?`;
+        connection.query(query, user, (err, result) => {
+            if (err) reject(new Error('something is wrong:' + err));
+            resolve(result);
+        });
+    });
+    var message = "Doctors Added SuccessFully";
+    res.render('adddoc',{message:message});
+    //res.send('success'); 
 });
 
 
@@ -58,13 +75,13 @@ router.post('/addthemedicine',async(req, res) => {
         medicineusage: req.body.imediusage
     };
 
-   await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
         const query = `INSERT INTO medicine SET ?`;
         connection.query(query, user, (err, result) => {
             if (err) reject(new Error('something is wrong:' + err));
             resolve(result);
         });
-   });
+    });
     var message = "Medicine Added SuccessFully";
     res.render('addmed',{message:message});
     //res.send('success'); 
@@ -78,7 +95,8 @@ router.post('/addthemedicine',async(req, res) => {
 router.post('/addthesymptoms',async(req, res) => {
     console.log(req.body);
     const user = {
-        symptomsname:req.body.isymname  
+        symptomsname:req.body.isymname,
+        symptomscategory: req.body.ispeciality
     };
     await new Promise((resolve, reject) => {
         const query = `INSERT INTO symptoms SET ?`;

@@ -2,6 +2,10 @@
 
 <section>
     <div class="container">
+        <br>
+        <% if (message.length > 0) { %>
+            <div class="alert alert-success col-sm-12" style="text-align: center;"><%= message %></div>
+        <% } %>
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Add Doctor Details</h5>
             <div class="card-body">
@@ -21,18 +25,24 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="validationDefault03">Specialisation 1 </label>
-                            <input type="text" class="form-control" id="validationDefault03" placeholder="Specialisation" name="idrspec1" required>
+                            <select name="ispeciality" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <%- include ('./list') %>
+                            </select>
+                        </div>
+                        <!--div class="col-md-4 mb-3">
+                            <label for="validationDefault03">Specialisation 2 </label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <%- include ('./list') %>
+                            </select>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="validationDefault04">Specialisation 2</label>
-                            <input type="text" class="form-control" id="validationDefault04" placeholder="Specialisation" name="idrspec2" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="validationDefault05">Specialisation 3</label>
-                            <input type="text" class="form-control" id="validationDefault05" placeholder="Specialisation" name="idrspec3" required>
-                        </div>
+                            <label for="validationDefault03">Specialisation 3 </label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <%- include ('./list') %>
+                            </select>
+                        </div-->
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
                 </form>

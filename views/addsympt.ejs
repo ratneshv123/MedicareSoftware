@@ -15,6 +15,12 @@
                             <label for="validationDefault01">Enters the Symptoms Name</label>
                             <input type="text" class="form-control" id="validationDefault01" placeholder="Symptoms Name" name="isymname" required>
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault01">Enters which category it falls.</label>
+                            <select name="ispeciality" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <%- include ('./list') %>
+                            </select>
+                        </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
                 </form>

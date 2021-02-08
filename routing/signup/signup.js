@@ -58,6 +58,8 @@ router.post('/signin', async (req, res) => {
         connection.query(query,user.name, (err, result) => {
             if (err) {
                 res.status(404).send(`Not Found` + err);
+                message="Invalid Username or Password or NULL value obtained";
+                res.render('home',{message:message});
                 reject(new Error('Something failed (Record Insertion) :' + err));
             }
             if (result.length === 0)
