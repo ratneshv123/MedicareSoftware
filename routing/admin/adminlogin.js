@@ -8,6 +8,11 @@ router.post('/adminoffice', (req, res) => {
     res.render('adminlogin',{message:message}); 
 });
 
+router.get('/welcomeadmin', (req, res) => {
+    var message = '';
+    res.render('inadmin',{message:message}); 
+});
+
 router.post('/welcomeadmin', async (req, res) => {
     console.log(req.body);
     var message='';    

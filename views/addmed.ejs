@@ -2,18 +2,22 @@
 
 <section>
     <div class="container">
+        <br>
+        <% if (message.length > 0) { %>
+            <div class="alert alert-success col-sm-12" style="text-align: center;"><%= message %></div>
+        <% } %>
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Add Medicine Details</h5>
             <div class="card-body">
-                <form>
+                <form action="/addthemedicine" method="post">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationDefault01">Enters the Medicine Name</label>
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Medicine Name" required>
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Medicine Name" name="imediname" required>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="validationDefault02">Medicine Usage</label>
-                            <input type="text" class="form-control" id="validationDefault02" placeholder="Medicine Usage" required>
+                            <input type="text" class="form-control" id="validationDefault02" placeholder="Medicine Usage" name="imediusage" required>
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
