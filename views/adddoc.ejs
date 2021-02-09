@@ -6,6 +6,7 @@
         <% if (message.length > 0) { %>
             <div class="alert alert-success col-sm-12" style="text-align: center;"><%= message %></div>
         <% } %>
+        
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Add Doctor Details</h5>
             <div class="card-body">
@@ -27,7 +28,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationDefault03">Specialisation 1 </label>
-                            <select name="ispeciality" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="idrspeciality">
                                 <%- include ('./list') %>
                             </select>
                         </div>

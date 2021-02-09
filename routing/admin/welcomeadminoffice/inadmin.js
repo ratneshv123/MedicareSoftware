@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const express = require('express');
 const connection = require('../../../db/db');
 const router = express.Router();
@@ -7,39 +8,35 @@ router.get('/adddoc', (req,res)=>{
     res.render('adddoc', {message:message});
 })
 
-router.get('/viewdoc', (req,res)=>{
-    res.render('viewdoc');
-})
-
-router.get('/updatedoc', (req,res)=>{
+router.get('/updatedoc', (req, res) => {
     res.render('updatedoc');
-})
+});
+
+router.get('/viewsympt', (req, res) => {
+    res.render('viewsympt');
+});
 
 router.get('/addmed', (req, res) => {
     var message = "";
-    res.render('addmed',{message:message});
-})
+    res.render('addmed', { message: message });
+});
 
-router.get('/viewmed', (req,res)=>{
+router.get('/viewmed', (req, res) => {
     res.render('viewmed');
-})
+});
 
-router.get('/updatemed', (req,res)=>{
+router.get('/updatemed', (req, res) => {
     res.render('updatemed');
-})
+});
 
 router.get('/addsympt', (req, res) => {
     var message = "";
-    res.render('addsympt',{message:message});
-})
-
-router.get('/viewsympt', (req,res)=>{
-    res.render('viewsympt');
-})
+    res.render('addsympt', { message: message });
+});
 
 router.get('/updatesympt', (req,res)=>{
     res.render('updatesympt');
-})
+});
 
 
 //routes for updation/addition of doctor
@@ -50,7 +47,7 @@ router.post('/addthedoctor', async(req, res) => {
         doctorsname: req.body.idrname,
         doctorsaddress: req.body.idraddress,
         doctorsfees: req.body.idrfees,
-        doctorsspeciality: req.body.ispeciality
+        doctorsspeciality: req.body.idrspeciality
     };
 
     await new Promise((resolve, reject) => {
@@ -60,10 +57,52 @@ router.post('/addthedoctor', async(req, res) => {
             resolve(result);
         });
     });
-    var message = "Doctors Added SuccessFully";
+
+    var message= "Doctors Added SuccessFully";
     res.render('adddoc',{message:message});
     //res.send('success'); 
 });
+
+
+//router for viewing doctors
+
+router.get('/viewdoc', async (req, res) => {
+    res.render('viewdoc');
+});
+
+
+router.post('/viewingdr', async (req, res) => {
+    const user = {
+        sortby: req.body.iprefname,
+        prefeby: req.body.enterpref
+    };
+    console.log(user);
+         const alluser=await new Promise((resolve, reject) => {
+             var query = ``;
+             if(user.sortby == 1)
+             {
+                 query = `SELECT * FROM doctors where doctorsname=?`;
+             }
+             else if (user.sortby == 2)
+             {
+                query = `SELECT * FROM doctors where doctorsspeciality=?`;
+             }else
+             if (user.sortby == 3)
+              {
+                     query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
+             } else
+             if (user.sortby == 4)
+             {
+                    query = `SELECT * FROM doctors `;
+             }    
+            connection.query(query,user.prefeby,(err, result) => {
+                if (err) reject(new Error('Something failed (Record Deletion) :' + err));
+                resolve(result);
+            });
+        });       
+        res.render('viewdoc',{users:alluser});
+});
+
 
 
 //routes for updation/addition of medicines
@@ -109,5 +148,25 @@ router.post('/addthesymptoms',async(req, res) => {
     res.render('addsympt',{message:message});
 });
 
+//router for viewing medicines
+router.post('/viewsymptoms', async(req, res) => {
+    console.log(req.body);
+    //database work-> get all the users from database...
+    const user = {
+       symptomscategory:req.body.idrspeciality  
+    };
+
+     const alluser=await new Promise((resolve, reject) => {
+        //console.log(this);
+        const query = `SELECT idsymptoms,symptomsname FROM symptoms where symptomscategory=?`;
+
+        connection.query(query,user.symptomscategory,(err, result) => {
+            if (err) reject(new Error('Something failed (Record Deletion) :' + err));
+            resolve(result);
+        });
+    });
+    
+    res.render('viewsympt',{users:alluser});
+});
 
 module.exports = router;
