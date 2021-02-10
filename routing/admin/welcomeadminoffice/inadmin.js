@@ -78,34 +78,34 @@ router.post('/viewingdr', async (req, res) => {
         sortby: req.body.iprefname
     };
     
-         const alluser=await new Promise((resolve, reject) => {
-             var query=`select * from doctors`;
-             if(user.sortby == 1)
-             {
-                var meg = 1;
-                 res.render('viewdoc', { mesa: meg });
-             }
-             else if (user.sortby == 2) 
-             {
-                 var meg = 2;
-                 res.render('viewdoc', { mesa: meg });
-             }else
-             if (user.sortby == 3)
-             { 
-                var meg = 0;
-                     query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
-             } else
-             if (user.sortby == 4)
-             {
-                    query = `SELECT * FROM doctors `;
-             }    
-            connection.query(query,(err, result) => {
-                if (err) reject(new Error('Something failed (Record Deletion) :' + err));
-                resolve(result);
-            });
-         });  
-         var meg = 0;
-        res.render('viewdoc',{users:alluser,mesa:meg});
+        const alluser=await new Promise((resolve, reject) => {
+        var query=`select * from doctors`;
+        if(user.sortby == 1)
+        {
+            var meg = 1;
+            res.render('viewdoc', { mesa: meg });
+        }
+        else if (user.sortby == 2) 
+        {
+            var meg = 2;
+            res.render('viewdoc', { mesa: meg });
+        }
+        else if (user.sortby == 3)
+        { 
+            var meg = 0;
+            query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
+        } 
+        else if (user.sortby == 4)
+        {
+            query = `SELECT * FROM doctors `;
+        }    
+        connection.query(query,(err, result) => {
+            if (err) reject(new Error('Something failed (Record Deletion) :' + err));
+            resolve(result);
+        });
+    });  
+    var meg = 0;
+    res.render('viewdoc',{users:alluser,mesa:meg});
 });
 
 //router for viewthedr
@@ -123,18 +123,17 @@ router.post('/viewthedr', async (req, res) => {
     {
         mes = 1;
         query = `SELECT * FROM doctors where doctorsname=?`;
-    } else
-     if (user.value == 2)
-     {
-         mes = 2;
+    } 
+    else if (user.value == 2)
+    {
+        mes = 2;
         query = `SELECT * FROM doctors where doctorsspeciality=?`; 
-            }
-     connection.query(query,user.name,(err, result) => {
-        if (err) reject(new Error('Something failed (Record Deletion) :' + err));
+    }
+        connection.query(query,user.name,(err, result) => {
+            if (err) reject(new Error('Something failed (Record Deletion) :' + err));
                 resolve(result);
-            });
+        });
     });
-    
     res.render('viewdoc',{users:alluser,mesa:mes});
 });
 
@@ -148,38 +147,39 @@ router.post('/updatingdr', async (req, res) => {
         sortby: req.body.iprefname
     };
     
-         const alluser=await new Promise((resolve, reject) => {
-             var query = ``;
-             if(user.sortby == 1)
-             {
-                var meg = 1;
-                 res.render('updatedoc', { mesa: meg });
-             }
-             else if (user.sortby == 2)
-             {
-                 var meg = 2;
-                 res.render('updatedoc', { mesa: meg });
-             }else
-             if (user.sortby == 3)
-             {
-                var meg = 0;
-                     query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
-             } else
-             if (user.sortby == 4)
-             {
-                    query = `SELECT * FROM doctors `;
-             } else if (user.sortby == 5)
-             {
-                var meg = 5;
-                res.render('updatedoc', { mesa: meg });
-             }    
-            connection.query(query,(err, result) => {
-                if (err) reject(new Error('Something failed (Record Deletion) :' + err));
-                resolve(result);
-            });
-         });  
-         var meg = 0;
-        res.render('updatedoc',{users:alluser,mesa:meg});
+    const alluser=await new Promise((resolve, reject) => {
+        var query = ``;
+        if(user.sortby == 1)
+        {
+            var meg = 1;
+            res.render('updatedoc', { mesa: meg });
+        }
+        else if (user.sortby == 2)
+        {
+            var meg = 2;
+            res.render('updatedoc', { mesa: meg });
+        }
+        else if (user.sortby == 3)
+        {
+            var meg = 0;
+            query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
+        } 
+        else if (user.sortby == 4)
+        {
+            query = `SELECT * FROM doctors `;
+        } 
+        else if (user.sortby == 5)
+        {
+            var meg = 5;
+            res.render('updatedoc', { mesa: meg });
+        }    
+        connection.query(query,(err, result) => {
+            if (err) reject(new Error('Something failed (Record Deletion) :' + err));
+            resolve(result);
+        });
+    });  
+    var meg = 0;
+    res.render('updatedoc',{users:alluser,mesa:meg});
 });
 
 
@@ -193,27 +193,27 @@ router.post('/updatethedr', async (req, res) => {
     console.log(user);
     var mes = 0;
     const alluser=await new Promise((resolve, reject) => {
-        var query;
+    var query;
     if (user.value == 1)
     {
         mes = 1;
         query = `SELECT * FROM doctors where doctorsname=?`;
-    } else
-     if (user.value == 2)
-     {
-         mes = 2;
+    } 
+    else if (user.value == 2)
+    {
+        mes = 2;
         query = `SELECT * FROM doctors where doctorsspeciality=?`; 
-     } else if (user.value == 5)
-     { 
+    } 
+    else if (user.value == 5)
+    { 
         mes = 5;
         query = `SELECT * FROM doctors where doctorsid=?`; 
-     }
-     connection.query(query,user.name,(err, result) => {
+    }
+    connection.query(query,user.name,(err, result) => {
         if (err) reject(new Error('Something failed (Record Deletion) :' + err));
                 resolve(result);
-            });
+        });
     });
-    
     res.render('updatedoc',{users:alluser,mesa:mes});
 });
 

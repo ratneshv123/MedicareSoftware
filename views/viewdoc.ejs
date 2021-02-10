@@ -5,7 +5,7 @@
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Search Doctor</h5>
             <div class="card-body">
-                    <form method="post">
+                <form method="post">
                     <div class="form-row">
                         <div class="col-md-6">
                             <label>Choose Searching Method</label>
@@ -24,37 +24,25 @@
                     </div>
                 </form>
                 
-                    <% if(mesa == 1) { %>
-
-                        <form method="POST" action="/viewthedr">
+                <% if(mesa == 1) { %>
+                    <form method="POST" action="/viewthedr">
                         <input type="text" class="form-control"placeholder="Enter Name" name="iname">
                         <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
                         <button class="btn btn-danger" type="submit">Submit Name</button>
-                        </form> 
-
-                    <% } else if(mesa == 2) {%>
-
-                     <form method="POST" action="/viewthedr">
+                    </form>
+                <% } else if(mesa == 2) {%>
+                    <form method="POST" action="/viewthedr">
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
                             <%- include ('./list') %>
                         </select>
                         <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
                         <button class="btn btn-danger" type="submit">Submit Speciality</button>
-                        </form> 
-
-                    <% } %>
-
-                    
-                
-                
-                </div>
-            </div>        
-        </div>
+                    </form> 
+                <% } %>
+            </div>
+        </div>        
+    </div>
         
-
-
-
-
     <div class="container">
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Doctors List</h5>

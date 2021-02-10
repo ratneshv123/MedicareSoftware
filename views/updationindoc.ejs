@@ -4,49 +4,36 @@
     <div class="container">
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;text-align: center;">Update</h5>
-            <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                        <form action="/letupdatedoctordetails" method="post">
-                        <h5 class="card-header" style="background-color: powderblue;text-align: center;">Present Detail</h5>
-                        <br>
-                   
-                   <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.id%>" name="doctorid" disabled>
-                    <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.name%>" name="doctorname" disabled>
-                    <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.address%>" name="doctoraddress" disabled>
-                   <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.fees%>" name="doctorfees" disabled>
-                   <br>
-                   <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.speciality%>" name="doctorspeciality" disabled>
-                    
+            <form action="/letupdatedoctordetails" method="post">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-header" style="background-color: powderblue;text-align: center;">Present Detail</h5><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.id%>" name="doctorid" disabled><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.name%>" name="doctorname" disabled><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.address%>" name="doctoraddress" disabled><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.fees%>" name="doctorfees" disabled><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="<%=user.speciality%>" name="doctorspeciality" disabled>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-header" style="background-color: powderblue;text-align: center;">To Change</h5>
-                        <br>
-                   <input type="text" style="text-align: center;" class="form-control" value="<%=user.id%>" placeholder="<%=user.id%>" name="id" readonly>
-                    <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="Doctor Name" name="name" >
-                    <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="Address" name="address">
-                    <br>
-                    <input type="text" style="text-align: center;" class="form-control" placeholder="Enter Fees" name="fees">   
-                    <br>
-                    <!-- <input type="text" style="text-align: center;" class="form-control" placeholder="Enter Speciality" name="speciality">    -->
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality">
-                        <%- include ('./list') %>
-                    </select>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-header" style="background-color: powderblue;text-align: center;">To Change</h5><br>
+                                <input type="text" style="text-align: center;" class="form-control" value="<%=user.id%>" placeholder="<%=user.id%>" name="id" readonly><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="Doctor Name" name="name" ><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="Address" name="address"><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="Enter Fees" name="fees"><br>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality">
+                                    <%- include ('./list') %>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <button class="btn btn-danger" style="text-align: center;">Click here to Update New Changes</button> 
+                <button class="btn btn-danger" style="width: 100%;">Click here to Update New Changes</button> 
             </form>   
         </div>
     </div>
@@ -64,9 +51,3 @@
         font-family:Georgia, 'Times New Roman', Times, serif
     }
 </style>
-
-
-
-
-
-                     
