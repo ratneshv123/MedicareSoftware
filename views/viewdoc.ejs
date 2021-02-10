@@ -3,27 +3,49 @@
 <section>
     <div class="container">
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
-            <h5 class="card-header" style="background-color: powderblue;">Add List</h5>
+            <h5 class="card-header" style="background-color: powderblue;">Search Doctor</h5>
             <div class="card-body">
-                    <form action="/viewingdr" method="post">
+                    <form method="post">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <label>Choose Your Preference</label>
+                            <label>Choose Searching Method</label>
                             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iprefname">
-                                <option selected>Choose...</option>
+                                <option selected>Choose Searching Method</option>
                                 <option value="4">View All Doctors</option>
-                                <option value="1">SortBy name</option>
-                                <option value="2">SortBy Speciality</option>
-                                <option value="3">SortBy Fees</option>
+                                <option value="1">Sort By name</option>
+                                <option value="2">Sort By Speciality</option>
+                                <option value="3">Sort By Fees</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>Choose Your Preference</label>
-                            <input type="text" class="form-control" name="enterpref">
+                            <br>
+                            <button class="btn btn-danger" formaction="/viewingdr" type="submit">Submit</button>                            
                         </div>
                     </div>
-                    <button class="btn btn-danger" type="submit">Submit</button>
                 </form>
+                
+                    <% if(mesa == 1) { %>
+
+                        <form method="POST" action="/viewthedr">
+                        <input type="text" class="form-control"placeholder="Enter Name" name="iname">
+                        <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
+                        <button class="btn btn-danger" type="submit">Submit Name</button>
+                        </form> 
+
+                    <% } else if(mesa == 2) {%>
+
+                     <form method="POST" action="/viewthedr">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
+                            <%- include ('./list') %>
+                        </select>
+                        <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
+                        <button class="btn btn-danger" type="submit">Submit Speciality</button>
+                        </form> 
+
+                    <% } %>
+
+                    
+                
                 
                 </div>
             </div>        
