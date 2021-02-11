@@ -72,14 +72,13 @@ router.post('/signin', async (req, res) => {
                 bcrypt.compare(user.password,result[0].password, (err, result) => {
                     if (result === true) {
                         console.log('success');
-                        res.render('welcomeuser', {user: user});  
+                        res.redirect('/welcomeuser');
                     } 
                     else
                     {
                         console.log('failure');
                         message = "Invalid username or password";
                         res.render('home', {message:message});
-
                         reject(new Error('Something failed (Record Insertion) :' + err));
                     }
                 });
