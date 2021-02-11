@@ -76,19 +76,21 @@
                         <th scope="col">FEES</th>
                         <th scope="col">SPECIALITY</th>
                         <th scope="col">UPDATE</th>
+                        <th scope="col">DELETE</th>
                       </tr>
                     </thead>
                     <tbody>
                         <% if(typeof users !=='undefined') { %>
                           <% users.forEach((user)=> { %>
                             <tr>
-                            <form action="/updatingdoctordetail" method="POST">
+                            <form method="POST">
                               <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" value="<%= user.doctorsid %>" name="doctorid" readonly></td>
                               <td id = "style_id"><input type="text" value="<%= user.doctorsname%>" name="doctorname" readonly></td>
                               <td id = "style_id"><input type="text" value="<%= user.doctorsaddress %>" name="doctoraddress" readonly></td>
                               <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" name="doctorfees" value="<%= user.doctorsfees%>" readonly></td>
                               <td id = "style_id"><input type="text" value="<%= user.doctorsspeciality%>" name="doctorspeciality" readonly></td>
-                              <td id = "style_id"><button class="btn btn-danger">Click here</button></td>
+                              <td id = "style_id"><button type="submit" formaction="/updatingdoctordetail" class="btn btn-danger">Click here</button></td>
+                              <td id = "style_id"><button type="submit" formaction="/deletethedoctor" class="btn btn-primary">Delete</button></td>
                             </form>
                             </tr>
                             <% }) %>
