@@ -1,5 +1,53 @@
 <%- include ('./header1') %>
 
+<section>
+    
+    <div class="container">
+        <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+            <h5 class="card-header" style="background-color: powderblue;text-align: center;">Viewing Symptoms</h5>
+            <div class="card-body">
+                <form action="/viewsymptoms" method="post">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault03">View By Specialisation</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="idrspeciality">
+                            <%- include ('./list') %>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-danger" type="submit">Submit form</button>
+                </form>
+                
+                <hr>
+                <table class="table table-dark" style="background-color: powderblue;">
+                    <thead>
+                      <tr>
+                        <th scope="col">SYMPTOM ID</th>
+                        <th scope="col">SYMPTOMS NAME</th>
+                        <th scope="col">UPDATE</th>
+                        <th scope="col">DELETE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% if(typeof users !=='undefined') { %>
+                          <% users.forEach((user)=> { %>
+                            <tr>
+                            <form  method="POST">
+                                <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" name="id" value="<%-user.idsymptoms%>" readonly></td>
+                                <td id = "style_id"><input type="text" name="name" value="<%-user.symptomsname%>" readonly></td>
+                                <td id = "style_id"><button type="submit" formaction="/updatingsymptom" class="btn btn-danger">Click here</button></td>
+                                <td id = "style_id"><button type="submit" formaction="/deletethesymptom" class="btn btn-primary">Delete</button></td>
+                            </form>
+                            </tr>
+                            <% }) %>
+                        <%}%>
+                    </tbody>
+                  </table>
+            </div>
+        </div>        
+    </div>
+</section>
+
 <%- include ('./footer') %>
 
 <style>

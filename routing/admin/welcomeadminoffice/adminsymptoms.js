@@ -42,7 +42,80 @@ router.post('/viewsymptoms', async(req, res) => {
         });
     });
     
-    res.render('viewsympt',{users:alluser});
+    res.render('updatesympt',{users:alluser});
 });
+
+router.post('/deletethesymptom', async(req, res) => {
+    console.log(req.body);
+   
+    const user = {
+        id: req.body.isymid
+    };
+    await new Promise((resolve, reject)=> {
+        
+        const query = `DELETE FROM symptoms WHERE idsymptoms=?`;
+        
+        connection.query(query, user.id, (err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Deletion) :'+err));
+            resolve (result);
+        });
+    });
+    
+    res.render('updatesympt');
+});
+
+
+router.post('/updatingsymptom',async(req, res) => {
+   
+    console.log(req.body);
+
+    const user = {
+        id: req.body.id,
+        name: req.body.name
+    };
+
+   const alluser=await new Promise((resolve, reject)=> {
+        const query = `SELECT symptomscategory FROM symptoms where  idsymptoms=?`;
+        connection.query(query, user.id, (err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Deletion) :'+err));
+            resolve (result);
+        });
+    });
+
+    console.log(alluser);
+    const users = {
+        id: req.body.id,
+        name: req.body.name,
+        speciality:alluser[0].symptomscategory
+    };
+    
+    res.render('updationinsym',{user:users});
+});
+
+//letupdate the symptom now
+
+router.post('/letupdatesymptomdetails',async(req, res) => {
+    console.log(req.body);
+    const user = {
+        id: req.body.ismyid,
+        name: req.body.ismyname,
+        speciality:req.body.speciality
+    };    
+    console.log(user);
+    const data = [[user.name], [user.speciality],[user.id]];
+
+    await new Promise((resolve, reject)=> {
+        //console.log(this);
+        const query = `UPDATE symptoms SET symptomsname=? , symptomscategory=? WHERE idsymptoms=? `;
+        connection.query(query,data,(err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Updation) :'+err));  
+            resolve(result);
+           // console.log(result);
+        });
+    });
+     res.render('updationinsym', { user: user });
+});
+
+
 
 module.exports = router;
