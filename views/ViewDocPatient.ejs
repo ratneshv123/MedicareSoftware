@@ -50,10 +50,10 @@
                     <a href="/welcomeuser"><i class="fas fa-home"></i> Home</a>
                 </li>
                 <li>
-                    <a href="/viewdocforpat"><i class="fas fa-cog"></i> Our Doctors</a>
+                    <a href="/viewdocforpat"><i class="fas fa-user-md"></i> Our Doctors</a>
                 </li>
                 <li>
-                    <a href="#section-2"><i class="fas fa-user"></i> Your Profile</a>
+                    <a href="/yourprofile"><i class="fas fa-user"></i> Your Profile</a>
                 </li>
                 <li>
                     <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
@@ -61,10 +61,10 @@
                     </a>
                     <ul class="collapse list-unstyled" id="otherSections">
                         <li>
-                            <a href="#section-3">Make an Appointment</a>
+                            <a href="/makeanappoinment"><i class="fas fa-calendar-check"></i> Make an Appointment</a>
                         </li>
                         <li>
-                            <a href="#section-4">Consult Us</a>
+                            <a href="/consultus"><i class="fas fa-headset"></i>Consult Us</a>
                         </li>
                     </ul>
                 </li>
@@ -87,210 +87,53 @@
                 <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
                     <i class="fas fa-align-left"></i> <span>Menu</span>
                 </a>
-            
+                
+                <a class="btn btn-primary btn-customized open-menu1" href="/" role="button">
+                    <i class="fas fa-sign-out-alt"></i><span>Log Out</span>
+                </a>
+
                 <!-- Top content -->
                 <div class="top-content section-container" id="top-content">
-                    <div class="container" style="margin-top: 30px;">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <i class="fas fa-calendar-check" style="font-size: 2em; color: snow;"></i>
-                                        <h5 class="card-title">Total Appointment</h5>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="card" style="width: 100%; margin: 30px;border: solid;">
+                            <div class="card-header" style="background-color: powderblue;">
+                                <label class="mylabel">Doctors List</label>
+                                <form class="form-inline my-2 my-lg-0" style="float: right;">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
                             </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <i class="fas fa-user-md" style="font-size: 2em; color: snow;"></i>
-                                        <h5 class="card-title">Total Doctors Added</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <i class="fas fa-user-injured" style="font-size: 2em; color: snow;"></i>
-                                        <h5 class="card-title">Total Patient</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <i class="fas fa-city" style="font-size: 2em; color: snow;"></i>
-                                        <h5 class="card-title">Total Cities Covered</h5>
-                                        <p class="work">5</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 1 -->
-                <div class="section-1-container section-container" id="section-1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col section-1 section-description wow fadeIn">
-                                <h2>What We Do</h2>
-                                <div class="divider-1 wow fadeInUp"><span></span></div>
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">NAME</th>
+                                        <th scope="col">ADDRESS</th>
+                                        <th scope="col">FEES</th>
+                                        <th scope="col">SPECIALITY</th>
+                                        <th scope="col">E-MAIL</th>
+                                        <th scope="col">CONTACT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if(typeof users !=='undefined') { %>
+                                            <% users.forEach((user)=> { %>
+                                                <tr>
+                                                    <td id = "style_id" style="width: 25px;text-align: center; font-weight: 500;"><%= user.doctorsid %></td>
+                                                    <td id = "style_id" style="font-weight: 500; text-align: left;"><%= user.doctorsname%></td>
+                                                    <td id = "style_id" style="font-weight: 500; text-align: left;"><%= user.doctorsaddress %></td>
+                                                    <td id = "style_id" style="width: 60px;text-align: center; font-weight: 500;"><%= user.doctorsfees%></td>
+                                                    <td id = "style_id" style="font-weight: 500; text-align: left;"><%= user.doctorsspeciality%></td>
+                                                    <td id = "style_id" style="font-weight: 500;"><%= user.doctorsemail%></td>
+                                                    <td id = "style_id" style="font-weight: 500;"><%= user.doctorscontact%></td>
+                                                </tr>
+                                            <% }) %>
+                                        <%}%>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 section-1-box wow fadeInUp">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="section-1-box-icon">
-                                            <i class="fas fa-magic"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h3>Branding</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 section-1-box wow fadeInDown">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="section-1-box-icon">
-                                            <i class="fas fa-cog"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h3>Web design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 section-1-box wow fadeInUp">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="section-1-box-icon">
-                                            <i class="fab fa-twitter"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h3>Social media</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 2 -->
-                <div class="section-2-container section-container section-container-gray-bg" id="section-2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col section-2 section-description wow fadeIn">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-8 section-2-box wow fadeInLeft">
-                                <h3>About Us</h3>
-                                <p class="medium-paragraph">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                                    sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                                    Ut wisi enim ad minim veniam, quis nostrud. 
-                                    Exerci tation ullamcorper suscipit <a href="#">lobortis nisl</a> ut aliquip ex ea commodo consequat. 
-                                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
-                                </p>
-                            </div>
-                            <div class="col-4 section-2-box wow fadeInUp">
-                                <img src="img/about-us.jpg" alt="about-us">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 3 -->
-                <div class="section-3-container section-container" id="section-3">
-                    <div class="container">
-                        
-                        <div class="row">
-                            <div class="col section-3 section-description wow fadeIn">
-                                <h2>Our Projects</h2>
-                                <div class="divider-1 wow fadeInUp"><span></span></div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 section-3-box wow fadeInLeft">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="section-3-box-icon">
-                                            <i class="fas fa-paperclip"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h3>Ut wisi enim ad minim</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                                            Ut wisi enim ad minim veniam, quis nostrud.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 section-3-box wow fadeInLeft">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="section-3-box-icon">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h3>Sed do eiusmod tempor</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                                            Ut wisi enim ad minim veniam, quis nostrud.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 section-3-box wow fadeInLeft">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="section-3-box-icon">
-                                            <i class="fas fa-cloud"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h3>Quis nostrud exerci tat</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                                            Ut wisi enim ad minim veniam, quis nostrud.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 section-3-box wow fadeInLeft">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="section-3-box-icon">
-                                            <i class="fab fa-google"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h3>Minim veniam quis nostrud</h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                                            Ut wisi enim ad minim veniam, quis nostrud.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -378,17 +221,6 @@
 <%- include ('./footer') %>
 
 <style>
-    .nav-link{
-        font-size: medium;
-        color: white;
-        text-transform: uppercase;
-        font-weight: bold;
-        display: block;
-        font-family:Georgia, 'Times New Roman', Times, serif
-    }
-    .card-body{
-        background-color: #009688;
-    }
     .card-title{
         color: snow;
     }
@@ -396,5 +228,17 @@
         font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: xx-large;
         color: snow;
+    }
+    .mycard:hover{
+        background-color: coral !important;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+    .mylabel{
+        font-family: 'Nunito', sans-serif;
+        float: left;
+        font-size: 32px;
+        color: rgb(60, 60, 60);
+        font-weight: 700;
+        border-bottom: 2px solid rgb(60, 60, 60);
     }
 </style>

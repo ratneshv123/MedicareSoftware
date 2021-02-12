@@ -43,38 +43,38 @@
         </div>        
     </div>
         
-    <div class="container">
-        <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
-            <h5 class="card-header" style="background-color: powderblue;">Doctors List</h5>
-            <div class="card-body">
-                <table class="table table-dark" style="background-color: powderblue;">
-                    <thead>
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NAME</th>
-                        <th scope="col">ADDRESS</th>
-                        <th scope="col">FEES</th>
-                        <th scope="col">SPECIALITY</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <% if(typeof users !=='undefined') { %>
-                          <% users.forEach((user)=> { %>
+    <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+        <h5 class="card-header" style="background-color: powderblue; text-align: center;">Doctors List</h5>
+        <div class="card-body">
+            <table class="table table-dark" style="background-color: powderblue;">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">ADDRESS</th>
+                    <th scope="col">FEES</th>
+                    <th scope="col">SPECIALITY</th>
+                    <th scope="col">E-MAIL</th>
+                    <th scope="col">CONTACT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(typeof users !=='undefined') { %>
+                        <% users.forEach((user)=> { %>
                             <tr>
-                            <form  method="POST">
-                              <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" value="<%= user.doctorsid %>" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsname%>" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsaddress %>" readonly></td>
-                              <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" value="<%= user.doctorsfees%>" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsspeciality%>" readonly></td>    
-                            </form>
+                                <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" value="<%= user.doctorsid %>" readonly></td>
+                                <td id = "style_id"><input type="text" value="<%= user.doctorsname%>" readonly></td>
+                                <td id = "style_id"><input type="text" value="<%= user.doctorsaddress %>" readonly></td>
+                                <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" value="<%= user.doctorsfees%>" readonly></td>
+                                <td id = "style_id"><input type="text" value="<%= user.doctorsspeciality%>" readonly></td>
+                                <td id = "style_id"><input type="text" value="<%= user.doctorsemail%>" readonly></td>
+                                <td id = "style_id"><input type="text" value="<%= user.doctorscontact%>" readonly></td>
                             </tr>
-                            <% }) %>
-                        <%}%>
-                    </tbody>
-                  </table>
-            </div>
-        </div>        
+                        <% }) %>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 

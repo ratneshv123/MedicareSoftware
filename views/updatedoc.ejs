@@ -1,46 +1,46 @@
 <%- include ('./header1') %>
 
 <section>
-    <div class="container">
-        <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
-            <h5 class="card-header" style="background-color: powderblue;">Search Doctor</h5>
-            <div class="card-body">
+        <div class="container">
+            <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+                <h5 class="card-header" style="background-color: powderblue;">Search Doctor</h5>
+                <div class="card-body">
                     <form method="post">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <label>Choose Searching Method</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iprefname">
-                                <option selected>Choose Searching Method</option>
-                                <option value="4">View All Doctors</option>
-                                <option value="5">Search By ID</option>
-                                <option value="1">Search By name</option>
-                                <option value="2">Search By Speciality</option>
-                                <option value="3">Search By Fees</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>Choose Searching Method</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iprefname">
+                                    <option selected>Choose Searching Method</option>
+                                    <option value="4">View All Doctors</option>
+                                    <option value="5">Search By ID</option>
+                                    <option value="1">Search By name</option>
+                                    <option value="2">Search By Speciality</option>
+                                    <option value="3">Search By Fees</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <br>
+                                <button class="btn btn-danger" formaction="/updatingdr" type="submit">Submit</button>                            
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <br>
-                            <button class="btn btn-danger" formaction="/updatingdr" type="submit">Submit</button>                            
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 
                     <% if(mesa == 1) { %>
 
                         <form method="POST" action="/updatethedr">
-                        <input type="text" class="form-control"placeholder="Enter Name" name="iname">
-                        <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
-                        <button class="btn btn-danger" type="submit">Submit Name</button>
+                            <input type="text" class="form-control"placeholder="Enter Name" name="iname">
+                            <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
+                            <button class="btn btn-danger" type="submit">Submit Name</button>
                         </form> 
 
                     <% } else if(mesa == 2) {%>
 
-                     <form method="POST" action="/updatethedr">
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
-                            <%- include ('./list') %>
-                        </select>
-                        <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
-                        <button class="btn btn-danger" type="submit">Submit Speciality</button>
+                        <form method="POST" action="/updatethedr">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
+                                <%- include ('./list') %>
+                            </select>
+                            <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
+                            <button class="btn btn-danger" type="submit">Submit Speciality</button>
                         </form> 
 
                     <% } else if(mesa == 5) { %>
@@ -49,21 +49,13 @@
                             <input type="text" class="form-control"placeholder="Enter ID" name="iname">
                             <input type="hidden" class="form-control" placeholder="Enter ID" value="5" name="ivalue">
                             <button class="btn btn-danger" type="submit">Submit ID</button>
-                            </form> 
+                        </form> 
 
-                        <%}%>
-                    
-                
-                
+                    <%}%>
                 </div>
             </div>        
         </div>
         
-
-
-
-
-    <div class="container">
         <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
             <h5 class="card-header" style="background-color: powderblue;">Doctors List</h5>
             <div class="card-body">
@@ -75,31 +67,34 @@
                         <th scope="col">ADDRESS</th>
                         <th scope="col">FEES</th>
                         <th scope="col">SPECIALITY</th>
+                        <th scope="col">E-MAIL</th>
+                        <th scope="col">CONTACT</th>
                         <th scope="col">UPDATE</th>
                         <th scope="col">DELETE</th>
                       </tr>
                     </thead>
                     <tbody>
                         <% if(typeof users !=='undefined') { %>
-                          <% users.forEach((user)=> { %>
-                            <tr>
-                            <form method="POST">
-                              <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" value="<%= user.doctorsid %>" name="doctorid" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsname%>" name="doctorname" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsaddress %>" name="doctoraddress" readonly></td>
-                              <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" name="doctorfees" value="<%= user.doctorsfees%>" readonly></td>
-                              <td id = "style_id"><input type="text" value="<%= user.doctorsspeciality%>" name="doctorspeciality" readonly></td>
-                              <td id = "style_id"><button type="submit" formaction="/updatingdoctordetail" class="btn btn-danger">Click here</button></td>
-                              <td id = "style_id"><button type="submit" formaction="/deletethedoctor" class="btn btn-primary">Delete</button></td>
-                            </form>
-                            </tr>
+                            <% users.forEach((user)=> { %>
+                                <tr>
+                                    <form method="POST">
+                                        <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" value="<%= user.doctorsid %>" name="doctorid" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 120px;" value="<%= user.doctorsname%>" name="doctorname" readonly></td>
+                                        <td id = "style_id"><input type="text" value="<%= user.doctorsaddress %>" name="doctoraddress" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" name="doctorfees" value="<%= user.doctorsfees%>" readonly></td>
+                                        <td id = "style_id"><input type="text" value="<%= user.doctorsspeciality%>" name="doctorspeciality" readonly></td>
+                                        <td id = "style_id"><input type="text" value="<%= user.doctorsemail%>" name="doctorsemail" readonly></td>
+                                        <td id = "style_id"><input type="text" value="<%= user.doctorscontact%>" name="doctorsmobno" readonly></td>
+                                        <td id = "style_id"><button type="submit" formaction="/updatingdoctordetail" class="btn btn-danger">Click here</button></td>
+                                        <td id = "style_id"><button type="submit" formaction="/deletethedoctor" class="btn btn-primary">Delete</button></td>
+                                    </form>
+                                </tr>
                             <% }) %>
-                        <%}%>
+                        <% } %>
                     </tbody>
-                  </table>
+                </table>
             </div>
         </div>        
-    </div>
 </section>
 
 <%- include ('./footer') %>

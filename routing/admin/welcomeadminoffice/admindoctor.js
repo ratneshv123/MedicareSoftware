@@ -11,7 +11,9 @@ router.post('/addthedoctor', async(req, res) => {
         doctorsname: req.body.idrname,
         doctorsaddress: req.body.idraddress,
         doctorsfees: req.body.idrfees,
-        doctorsspeciality: req.body.idrspeciality
+        doctorsspeciality: req.body.idrspeciality,
+        doctorsemail: req.body.iemail,
+        doctorscontact: req.body.imobno
     };
 
     await new Promise((resolve, reject) => {
@@ -180,7 +182,9 @@ router.post('/updatingdoctordetail', (req, res) => {
         name: req.body.doctorname,
         address: req.body.doctoraddress,
         fees: req.body.doctorfees,
-        speciality:req.body.doctorspeciality
+        speciality:req.body.doctorspeciality,
+        email: req.body.doctorsemail,
+        mobno: req.body.doctorsmobno
     }
     res.render('updationindoc',{user:user}); 
 });
@@ -194,13 +198,15 @@ router.post('/letupdatedoctordetails',async(req, res) => {
         name: req.body.name,
         address: req.body.address,
         fees: req.body.fees,
-        speciality:req.body.speciality
+        speciality:req.body.speciality,
+        email: req.body.email,
+        mobno: req.body.mobno
     };    
-    const data = [[user.name], [user.address], [user.fees], [user.speciality],[user.id]];
+    const data = [[user.name], [user.address], [user.fees], [user.speciality],[user.email],[user.mobno],[user.id]];
 
     await new Promise((resolve, reject)=> {
         //console.log(this);
-        const query = `UPDATE doctors SET doctorsname=? , doctorsaddress=? , doctorsfees=? , doctorsspeciality=? WHERE doctorsid=? `;
+        const query = `UPDATE doctors SET doctorsname=? , doctorsaddress=? , doctorsfees=? , doctorsspeciality=? , doctorsemail=? , doctorscontact=? WHERE doctorsid=? `;
         connection.query(query,data,(err, result)=> {
             if (err)    reject(new Error('Something failed (Record Updation) :'+err));  
             resolve(result);

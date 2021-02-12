@@ -26,11 +26,19 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="validationDefault03">Specialisation 1 </label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="idrspeciality">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="idrspeciality" required>
                                 <%- include ('./list') %>
                             </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault03">E-Mail ID </label>
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="E-Mail" name="iemail" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault03">Mobile No </label>
+                            <input type="text" class="form-control" id="validationDefault04" placeholder="Mob No" name="imobno" required>                     
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
