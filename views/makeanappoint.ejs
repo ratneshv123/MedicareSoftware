@@ -26,6 +26,8 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+
+        
     </head>
 
     <body>
@@ -92,9 +94,93 @@
                     <i class="fas fa-sign-out-alt"></i><span>Log Out</span>
                 </a>
 
-                <!--
-                    Do your work here
-                -->
+
+<!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+
+  
+  <div class="appointy" style="text-align:center; ">
+    <div class="banner3">
+        <div class="py-5 banner" style="background-image:url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/form-banners/banner2/banner-bg.jpg);">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7 col-lg-5">
+                <h3 class="my-3 text-white font-weight-medium text-uppercase">Book Appointment</h3>
+                <div class="bg-white">
+                  <div class="form-row border-bottom">
+                    <div class="p-4 left border-right w-50">
+                      <label class="text-inverse font-12 text-uppercase">First Name</label>
+                      <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Your First Name" />
+                    </div>
+                    <div class="p-4 right w-50">
+                      <label class="text-inverse font-12 text-uppercase">Last Name</label>
+                      <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Your Last Name" />
+                    </div>
+                  </div>
+                  <div class="form-row border-bottom p-4">
+                    <label class="text-inverse font-12 text-uppercase">Email Address</label>
+                    <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Email Address" />
+                  </div>
+                  <div class="form-row border-bottom p-4">
+                    <label class="text-inverse font-12 text-uppercase">Phone Number</label>
+                    <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Phone Number" />
+                  </div>
+                  <div class="form-row border-bottom p-4">
+                    <label class="text-inverse font-12 text-uppercase">Choose Doctor</label>
+                    <!-- <input type="text"  placeholder="Select Your Doctor for Appointment" /> -->
+                   <form method="post" action="/abcde">
+                    <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="iprefname">
+                        <option selected>Choose Doctor</option>
+                        <% if(typeof users !=='undefined') { %>
+                            <% users.forEach((user)=> { %>
+                                    <option ><%-user.doctorsname%></option>
+                            <% }) %>
+                        <%}%>
+                    </select>
+                    <button class="btn" type="submit">Click To Check Availability of Date</button>
+                </form>
+                </div>
+                <div class="form-row border-bottom p-4 position-relative">
+                    <label class="text-inverse font-12 text-uppercase">Booking Date</label>
+                    <form method="post" action="/checktime">
+                    <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="iprefname">
+                        <option selected>Available Dates</option>
+                        <option ><%=dates[0]%></option>
+                        <option ><%=dates[1]%></option>
+                        <option ><%=dates[2]%></option>
+                        <option ><%=dates[3]%></option>
+                        <option ><%=dates[4]%></option>
+                    </select>
+                    <button class="btn" type="submit">Click To Check Availability of The time</button>
+                    </form>
+                  </div>
+                  <div class="form-row border-bottom p-4 position-relative">
+                    <label class="text-inverse font-12 text-uppercase">Appointment Time</label>
+                    <div class="input-group date">
+                        <input type="text" class="border-0 p-0 font-14 form-control" id="dp" placeholder="Select the Appointment Time" />
+                        <label class="mt-2" for="dp"><i class="icon-calendar mt-1"></i></label>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <button class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase">
+                                          <span>Book Yor Appointment Now</span>
+                                  </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!-- end -->
+                          
+         
+
+
+<!-- sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+
+
                 
             </div>
         </div>
