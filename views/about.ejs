@@ -40,32 +40,71 @@
         </div>
     </nav>
     <section>
-        <div class="w3-container">
-            <h2>Tabs</h2>
-            <p>Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects. Click on the links below.</p>
-          </div>
+        
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button" onclick="openCity('London')">About Our Project</button>
+            <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Our Partners</button>
+        </div>
+        <div id="London" class="w3-container city">
+            <h2 style="text-align: center;">About our Project</h2>
+            <div class="jumbotron jumbotron-fluid" style="border-radius: 10px;">
+                <div class="container">
+                    <p class="lead">Medicare Software, as the name suggest this application will handle all your medicinal activity at once
+                        <br> We have made this project with a specific objective that whenever anyone needs any small information, 
+                        they should not go to the doctors directly. Firstly they came to this software and consult us.
+                        <br>As one of our friend need some consultancy regarding some medicine and doctors so there is no other software available
+                        on the internet to tell them the whole details of the doctors, which our software can do.
+                    </p>
+                </div>
+            </div>
+            <h2 style="text-align: center;">Why to make any Appoinment with us?</h2>
+            <div class="jumbotron jumbotron-fluid" style="border-radius: 10px;">
+                <div class="container">
+                    <p class="lead" style="justify-content: center;">As there are many medicial software available in the market that handle multiple hospital at once, but they 
+                        ask you for the fees first and then they make any further consultancy or Appoinment for you. Whereas in our Medicare you
+                        get free consultancy services without any single penny and after making your Appoinment we will ask you from our fees.
+                    </p>
+                </div>
+            </div>
+        </div>
           
-          <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button" onclick="openCity('London')">London</button>
-            <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Paris</button>
-            <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Tokyo</button>
-          </div>
-          
-          <div id="London" class="w3-container city">
-            <h2>London</h2>
-            <p>London is the capital city of England.</p>
-          </div>
-          
-          <div id="Paris" class="w3-container city" style="display:none">
-            <h2>Paris</h2>
-            <p>Paris is the capital of France.</p> 
-          </div>
-          
-          <div id="Tokyo" class="w3-container city" style="display:none">
-            <h2>Tokyo</h2>
-            <p>Tokyo is the capital of Japan.</p>
-          </div>          
+        <div id="Paris" class="w3-container city" style="display:none">
+            <h2 style="text-align: center;font-size: 50px;">Partners</h2>
+            <div class="jumbotron jumbotron-fluid" style="border-radius: 10px;">
+                <div class="container">
+                    <p style="font-size: 20px;">Ratnesh Suar<br>9983424392<br>13, Vishwakarma Nagar, Ujjain Dewas Road, Dewas<br><br>                                 
+                        <a href="#"><i class="fab fa-facebook-f" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-linkedin" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-twitter" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-instagram" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-pinterest" style="font-size: 20px;margin-right: 20px;"></i></a>
+                    </p>
+                </div>
+            </div>
+            <div class="jumbotron jumbotron-fluid" style="border-radius: 10px;">
+                <div class="container">
+                    <p style="font-size: 20px;">Gaurav Mehta<br>9644054096<br>471, Vikas Nagar, 14/2, Neemuch<br><br>
+                        <a href="#"><i class="fab fa-facebook-f" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-linkedin" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-twitter" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-instagram" style="font-size: 20px;margin-right: 20px;"></i></a>
+                        <a href="#"><i class="fab fa-pinterest" style="font-size: 20px;margin-right: 20px;"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <script>
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            document.getElementById(cityName).style.display = "block";  
+        }
+    </script>
 
 <%- include ('./footer') %>
 
@@ -79,3 +118,4 @@
         font-family:Georgia, 'Times New Roman', Times, serif
     }
 </style>
+
