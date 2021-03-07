@@ -44,8 +44,4 @@ router.get('/yourprofile', (req,res)=>{
     res.render('viewpatient');
 })
 
-router.get('/makeanappoinment', (req,res)=>{
-    res.render('makeanappoint');
-})
-
 module.exports = router;
