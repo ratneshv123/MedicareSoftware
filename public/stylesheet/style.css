@@ -3,7 +3,6 @@
   font-family: "Montserrat", sans-serif;
   color: #8d97ad;
   font-weight: 300;
-  max-height: 800px;
 }
 
 .banner3 .banner {
@@ -29,10 +28,6 @@
   font-weight: 500;
 }
 
-.banner3 .subtitle {
-  color: #8d97ad;
-  line-height: 24px;
-}
 
 .banner3 .btn-danger-gradiant {
   background: #ff4d7e;
