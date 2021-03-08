@@ -16,6 +16,26 @@ router.get('/makeanappoinment', async (req, res) => {
     res.render('makeanappoint',{ users: alldoctor,dates:message,value:message});
 });
 
+router.post('/resetdr', async (req, res) => {
+    const user = {
+        firstname: req.body.ifirstname,
+        lastname:req.body.ilastname,
+        email:req.body.iemail,
+        mobno:req.body.imobno,
+        prefdoc:req.body.iprefname,
+    };
+    var message = "";
+    const alldoctor=await new Promise((resolve, reject) => {
+        const query = `select doctorsname from doctors`;
+        connection.query(query, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    console.log(alldoctor);
+    res.render('makeanappoint',{ users: alldoctor,dates:message,value:user});
+});
+
 router.post('/abcde', async(req, res) => {
     const user = {
         firstname: req.body.ifirstname,
@@ -37,12 +57,13 @@ router.post('/abcde', async(req, res) => {
     }
     const date = datearray;
     const alldoctor=await new Promise((resolve, reject) => {
-        const query = `select doctorsname from doctors`;
-        connection.query(query, (err, result) => {
-            if (err) reject(new Error('Something Went Wrong+:' + err));
-            resolve(result);
-        });
-    });
+            const query = `select doctorsname from doctors where doctorsname=?`;
+            connection.query(query,user.prefdoc ,(err, result) => {
+                    if (err) reject(new Error('Something Went Wrong+:' + err));
+                    resolve(result);
+                });
+             });
+    // const alldoctor = req.body.iprefname;
     console.log(alldoctor);
     console.log(date[0]);
     res.render('makeanappoint',{users:alldoctor,dates:date,value:user});

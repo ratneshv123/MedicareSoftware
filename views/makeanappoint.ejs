@@ -86,7 +86,7 @@
                         <div class="col-md-7 col-lg-5">
                             <h3 class="my-3 text-white font-weight-medium text-uppercase">Book Appointment</h3>
                             <div class="bg-white">
-                                <form method="post" action="/abcde">
+                                <form method="post" >
                                     <div class="form-row border-bottom">
                                         <div class="p-4 left border-right w-50">
                                             <label class="text-inverse font-12 text-uppercase">First Name</label>
@@ -108,19 +108,20 @@
                                     <div class="form-row border-bottom p-4">
                                         <label class="text-inverse font-12 text-uppercase">Choose Doctor</label>
                                         <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="iprefname" value="<%=value.prefdoc%>">
-                                            <option selected>Choose Doctor</option>
                                             <% if(typeof users !=='undefined') { %>
                                                 <% users.forEach((user)=> { %>
-                                                        <option ><%-user.doctorsname%></option>
+                                                        <option selected><%-user.doctorsname%></option>
                                                 <% }) %>
                                             <%}%>
                                         </select>
-                                        <button class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" type="submit">Click To Check Availability of Date</button>
-                                    </form>
+                                        <button formaction="/abcde" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase"  type="submit">Click To Check Availability of Date</button>
+                                        <hr>
+                                        <button formaction="/resetdr" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" style="margin-top: 10px;" type="submit">Click Here to Reset Doctor</button>
+                                       
                                 </div>
                                 <div class="form-row border-bottom p-4 position-relative">
                                     <label class="text-inverse font-12 text-uppercase">Booking Date</label>
-                                    <form method="post" action="/checktime">
+                                   
                                         <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibookdate">
                                             <option selected>Available Dates</option>
                                             <option ><%=dates[0]%></option>
@@ -129,7 +130,7 @@
                                             <option ><%=dates[3]%></option>
                                             <option ><%=dates[4]%></option>
                                         </select>
-                                        <button class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" type="submit">Click To Check Availability of The time</button>
+                                        <button formaction="/checktime" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" type="submit">Click To Check Availability of The time</button>
                                     </form>
                                 </div>
                                 <div class="form-row border-bottom p-4 position-relative">
@@ -138,6 +139,11 @@
                                         <input type="text" class="border-0 p-0 font-14 form-control" id="dp" placeholder="Select the Appointment Time" />
                                         <label class="mt-2" for="dp"><i class="icon-calendar mt-1"></i></label>
                                     </div>
+                                    <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibookdate">
+                                        <option selected>Available Time</option>
+                                        <option >10:00 AM - 11:00 AM </option>
+                                        <option >5:00  PM - 6:00 PM </option>
+                                    </select>
                                 </div>
                                 <div>
                                     <button class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase">
