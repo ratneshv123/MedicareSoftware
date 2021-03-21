@@ -165,13 +165,12 @@
                                         </span>Afternoon</th>
                                     <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
                                         nightlight_round
-                                        
-                                        </span>Evening</th>
-
-                                        <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
-                                            bedtime
-                                            
-                                            </span>Night</th>
+                                        </span>Evening
+                                    </th>
+                                    <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                        nightlight_round
+                                        </span>Night
+                                    </th>
                                     </tr>
                                 </thead>
                                 <tbody id="current-slots">
@@ -274,6 +273,11 @@
         <!-- End wrapper -->
 
         <!-- Javascript -->
+        <script>
+            function confirmSlot(id){
+              document.getElementById("demo").innerHTML = "Hello World";
+            }
+        </script>
         <script src="../js/jquery-3.3.1.min.js"></script>
         <script src="../js/jquery-migrate-3.0.0.min.js"></script>
         <script src="../js/jquery.backstretch.min.js"></script>
