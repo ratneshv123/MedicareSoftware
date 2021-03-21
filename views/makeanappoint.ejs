@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="../stylesheet/styleMERO.css">
         <link rel="stylesheet" href="../stylesheet/media-queries.css">
         <link rel="stylesheet" href="../stylesheet/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="assets/ico/favicon.png">
@@ -119,6 +121,106 @@
                                         <button formaction="/resetdr" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" style="margin-top: 10px;" type="submit">Click Here to Reset Doctor</button>
                                        
                                 </div>
+
+
+        <!-- mk -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#appointment-slots">
+                    Launch demo modal
+                    </button>
+
+
+                                                    <!-- book the slot -->
+                    <div class="modal" id="appointment-slots" tabindex="-1" role="dialog" aria-labelledby="appointment-slots" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title">Slots</h5>
+                            <span data-toggle="popover" id="record-id" title="RECORD ID" class="close material-icons"
+                                    style="color: rgb(255, 153, 0);">
+                                    info
+                                </span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            
+                            </div>
+                            <div class="modal-body">
+                            
+                            <h3 id="currTime"> Book a slot on </h3>
+                    
+                                <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                        wb_twilight
+                                        </span>Morning</th>
+                                    <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                        wb_sunny
+                                        </span>Afternoon</th>
+                                    <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                        nightlight_round
+                                        
+                                        </span>Evening</th>
+
+                                        <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                            bedtime
+                                            
+                                            </span>Night</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="current-slots">
+                                    <tr>
+                                    <td><div class="slot" id="10:00 AM" onclick = "confirmSlot(this.id)">10:00 AM</div></td>
+                                    <td><div class="slot" id="12:00 PM" onclick = "confirmSlot(this.id)">12:00 PM</div></td>
+                                    <td><div class="slot" id="06:00 PM" onclick = "confirmSlot(this.id)">06:00 PM</div></td>
+                                    <td><div class="slot" id="08:00 PM" onclick = "confirmSlot(this.id)">08:00 PM</div></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="10:15 AM" onclick = "confirmSlot(this.id)">10:15 AM</div></td>
+                                    <td><div class="slot" id="12:15 PM" onclick = "confirmSlot(this.id)">12:15 PM</div></td>
+                                    <td><div class="slot" id="06:15 PM" onclick = "confirmSlot(this.id)">06:15 PM</div></td>
+                                    <td><div class="slot" id="08:15 PM" onclick = "confirmSlot(this.id)">08:15 PM</div></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="10:30 AM" onclick = "confirmSlot(this.id)">10:30 AM</div></td>
+                                    <td><div class="slot" id="12:30 PM" onclick = "confirmSlot(this.id)">12:30 PM</div></td>
+                                    <td><div class="slot" id="06:30 PM" onclick = "confirmSlot(this.id)">06:30 PM</div></td>
+                                    <td><div class="slot" id="08:30 PM" onclick = "confirmSlot(this.id)">08:30 PM</div></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="10:45 AM" onclick = "confirmSlot(this.id)">10:45 AM</div></td>
+                                    <td><div class="slot" id="12:45 PM" onclick = "confirmSlot(this.id)">12:45 PM</div></td>
+                                    <td><div class="slot" id="10:45 PM" onclick = "confirmSlot(this.id)">10:45 PM</div></td>
+                                    <td></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="11:00 AM" onclick = "confirmSlot(this.id)">11:00 AM</div></td>
+                                    <td><div class="slot" id="01:00 PM" onclick = "confirmSlot(this.id)">01:00 PM</div></td>
+                                    <td><div class="slot" id="07:00 PM" onclick = "confirmSlot(this.id)">07:00 PM</div></td>
+                                    <td></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="11:15 AM" onclick = "confirmSlot(this.id)">11:15 AM</div></td>
+                                    <td><div class="slot" id="01:15 PM" onclick = "confirmSlot(this.id)">01:15 PM</div></td>
+                                    <td><div class="slot" id="07:15 PM" onclick = "confirmSlot(this.id)">07:15 PM</div></td>
+                                    <td></td>
+                                    </tr>
+                                    <tr>
+                                    <td><div class="slot" id="11:30 AM" onclick = "confirmSlot(this.id)">11:30 AM</div></td>
+                                    <td><div class="slot" id="01:30 PM" onclick = "confirmSlot(this.id)">01:30 PM</div></td>
+                                    <td></td>
+                                    <td></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+  <!-- mk -->
+
+
                                 <div class="form-row border-bottom p-4 position-relative">
                                     <label class="text-inverse font-12 text-uppercase">Booking Date</label>
                                    

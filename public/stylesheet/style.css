@@ -249,3 +249,17 @@ h6 {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
 }
+
+
+
+/* appointment style */
+.slot {
+    height: 30px;
+    width: 80px;
+    border: 1px solid black;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+/* ended */
