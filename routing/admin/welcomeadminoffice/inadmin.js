@@ -33,7 +33,8 @@ router.get('/addmed', async (req, res) => {
 });
 
 router.get('/viewmed', (req, res) => {
-    res.render('viewmed');
+    var mesa = "";
+    res.render('viewmed',{mesa:mesa});
 });
 
 router.get('/updatemed', (req, res) => {

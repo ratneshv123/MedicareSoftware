@@ -50,11 +50,7 @@ router.post('/viewingdr', async (req, res) => {
         { 
             var meg = 0;
             query = `SELECT * FROM doctors ORDER BY doctorsfees ASC`;
-        } 
-        else if (user.sortby == 4)
-        {
-            query = `SELECT * FROM doctors `;
-        }    
+        }  
         connection.query(query,(err, result) => {
             if (err) reject(new Error('Something failed (Record Deletion) :' + err));
             resolve(result);
@@ -75,16 +71,16 @@ router.post('/viewthedr', async (req, res) => {
     var mes = 0;
     const alluser=await new Promise((resolve, reject) => {
         var query = `SELECT * FROM doctors`;
-    if (user.value == 1)
-    {
-        mes = 1;
-        query = `SELECT * FROM doctors where doctorsname=?`;
-    } 
-    else if (user.value == 2)
-    {
-        mes = 2;
-        query = `SELECT * FROM doctors where doctorsspeciality=?`; 
-    }
+        if (user.value == 1)
+        {
+            mes = 1;
+            query = `SELECT * FROM doctors where doctorsname=?`;
+        } 
+        else if (user.value == 2)
+        {
+            mes = 2;
+            query = `SELECT * FROM doctors where doctorsspeciality=?`; 
+        }
         connection.query(query,user.name,(err, result) => {
             if (err) reject(new Error('Something failed (Record Deletion) :' + err));
                 resolve(result);

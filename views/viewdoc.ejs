@@ -18,25 +18,36 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <br>
-                            <button class="btn btn-danger" formaction="/viewingdr" type="submit">Submit</button>                            
+                            <button class="btn btn-danger" style="margin-top: 30px;" formaction="/viewingdr" type="submit">Submit</button>                            
                         </div>
                     </div>
                 </form>
                 
                 <% if(mesa == 1) { %>
                     <form method="POST" action="/viewthedr">
-                        <input type="text" class="form-control"placeholder="Enter Name" name="iname">
-                        <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
-                        <button class="btn btn-danger" type="submit">Submit Name</button>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control"placeholder="Enter Name" name="iname">
+                                <input type="hidden" class="form-control" placeholder="Enter Name" value="1" name="ivalue">
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" type="submit">Submit Name</button>
+                            </div>
+                        </div>
                     </form>
                 <% } else if(mesa == 2) {%>
                     <form method="POST" action="/viewthedr">
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
-                            <%- include ('./list') %>
-                        </select>
-                        <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
-                        <button class="btn btn-danger" type="submit">Submit Speciality</button>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iname">
+                                    <%- include ('./list') %>
+                                </select>
+                                <input type="hidden" class="form-control" placeholder="Enter Name" value="2" name="ivalue">
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger" type="submit">Submit Speciality</button>
+                            </div>
+                        </div>
                     </form> 
                 <% } %>
             </div>
