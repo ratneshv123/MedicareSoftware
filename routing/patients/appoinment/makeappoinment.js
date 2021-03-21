@@ -84,4 +84,10 @@ router.post('/checktime', (req, res) => {
     res.send('success');
 });
 
+
+// appointment mayur 
+
+
+
+
 module.exports = router;
