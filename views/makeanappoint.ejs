@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="form-row border-bottom p-4">
                                         <label class="text-inverse font-12 text-uppercase">Choose Doctor</label>
-                                        <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="iprefname" value="<%=value.prefdoc%>">
+                                        <select class="form-control" id="inlineFormCustomSelect" name="iprefname" value="<%=value.prefdoc%>">
                                             <% if(typeof users !=='undefined') { %>
                                                 <% users.forEach((user)=> { %>
                                                         <option selected><%-user.doctorsname%></option>

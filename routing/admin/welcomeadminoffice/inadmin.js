@@ -1,4 +1,3 @@
-const { render } = require('ejs');
 const express = require('express');
 const connection = require('../../../db/db');
 const router = express.Router();
@@ -13,20 +12,24 @@ router.get('/updatedoc', (req, res) => {
     res.render('updatedoc',{mesa:mes});
 });
 
-//router for viewing doctors in view tab
-
 router.get('/viewdoc', async (req, res) => {
     var mes = 0;
     res.render('viewdoc',{mesa:mes});
 });
 
-router.get('/viewsympt', (req, res) => {
-    res.render('viewsympt');
-});
+/*----------------------------------------------------------------------------------------------------------*/
 
-router.get('/addmed', (req, res) => {
+router.get('/addmed', async (req, res) => {
+    const alluser = await new Promise((resolve, reject) => {
+        const query = `select symptomsname from symptoms order by symptomsname;`;
+        connection.query(query, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    console.log(alluser);
     var message = "";
-    res.render('addmed', { message: message });
+    res.render('addmed', {message: message,users: alluser});
 });
 
 router.get('/viewmed', (req, res) => {
@@ -37,6 +40,8 @@ router.get('/updatemed', (req, res) => {
     res.render('updatemed');
 });
 
+/*----------------------------------------------------------------------------------------------------------*/
+
 router.get('/addsympt', (req, res) => {
     var message = "";
     res.render('addsympt', { message: message });
@@ -46,5 +51,8 @@ router.get('/updatesympt', (req,res)=>{
     res.render('updatesympt');
 });
 
+router.get('/viewsympt', (req, res) => {
+    res.render('viewsympt');
+});
 
 module.exports = router;

@@ -42,6 +42,6 @@ router.get('/viewdocforpat', async(req,res)=>{
 
 router.get('/yourprofile', (req,res)=>{
     res.render('viewpatient');
-})
+});
 
 module.exports = router;

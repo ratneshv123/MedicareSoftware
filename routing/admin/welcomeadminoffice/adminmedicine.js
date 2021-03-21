@@ -1,4 +1,3 @@
-const { render } = require('ejs');
 const express = require('express');
 const connection = require('../../../db/db');
 const router = express.Router();
@@ -6,6 +5,7 @@ const router = express.Router();
 //routes for updation/addition of medicines
 
 router.post('/addthemedicine',async(req, res) => {
+
     console.log(req.body);
     const user = {
         medicinename: req.body.imediname,
@@ -21,7 +21,6 @@ router.post('/addthemedicine',async(req, res) => {
     });
     var message = "Medicine Added SuccessFully";
     res.render('addmed',{message:message});
-    //res.send('success'); 
 });
 
 

@@ -21,7 +21,14 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationDefault02">Symptoms type</label>
-                            <input type="text" class="form-control" id="validationDefault02" placeholder="SymptomsType" name="" required>
+                            <select class="form-control" id="inlineFormCustomSelect" name="iprefname">
+                                <option selected>Choose your option.....</option>
+                                <% if(typeof users !=='undefined') { %>
+                                    <% users.forEach((user)=> { %>
+                                        <option><%-user.symptomsname%></option>
+                                    <% }) %>
+                                <%}%>
+                            </select>
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit form</button>
