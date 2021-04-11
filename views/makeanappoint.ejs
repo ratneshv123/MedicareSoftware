@@ -117,29 +117,26 @@
                                                 <% }) %>
                                             <%}%>
                                         </select>
-                                        <button formaction="/abcde" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase"  type="submit">Click To Check Availability of Date</button>
-                                        <hr>
-                                        <button formaction="/resetdr" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" style="margin-top: 10px;" type="submit">Click Here to Reset Doctor</button>
-                                       
+                                        <!-- <button formaction="/abcde" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase"  type="submit">Click To Check Availability of Date</button>
+                                        <hr> -->
+                                        <button formaction="/resetdr" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" style="margin-top: 10px;" type="submit">Click Here to Reset Doctor</button>                                    
                                 </div>
-
-
         <!-- mk -->
 
 
         
 
 
-                    <button type="button" class="font-14 font-weight-medium btn btn-danger-gradiant text-white text-uppercase" data-toggle="modal" data-target="#appointment-slots">
-                    Make an Appointment
+                    <button type="button" class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase" data-toggle="modal" data-target="#appointment-slots">
+                        <span>Book Your Appointment Now</span>
                     </button>
+                    
 
-
-                                                    <!-- book the slot -->
+                    <!-- book the slot -->
                     <div class="modal" id="appointment-slots" tabindex="-1" role="dialog" aria-labelledby="appointment-slots" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-content">
+                                <div class="modal-header">
                             <h5 class="modal-title">Slots</h5>
                             <span data-toggle="popover" id="record-id" title="RECORD ID" class="close material-icons"
                                     style="color: rgb(255, 153, 0);">
@@ -165,12 +162,12 @@
                                         </span>Afternoon</th>
                                     <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
                                         nightlight_round
-                                        </span>Evening
-                                    </th>
-                                    <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
-                                        nightlight_round
-                                        </span>Night
-                                    </th>
+                                        
+                                        </span>Evening</th>
+
+                                        <th scope="col"><span class="material-icons" style="vertical-align: bottom;">
+                                            bedtime
+                                            </span>Night</th>
                                     </tr>
                                 </thead>
                                 <tbody id="current-slots">
@@ -223,10 +220,80 @@
                         </div>
                     </div>
 
+                    <!-- confirm your booking using contact no.-->
+  <div class="modal bd-example-modal-lg" id="confirm-slot" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Slots</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+        </div>
+        <div class="modal-body">
+          <div id="confirm-booking-msg" role="alert" disabled>
+            
+          </div>
+          <div class="row">
+            
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="section">
+                    <h4><span class="material-icons" style="vertical-align: bottom;">
+                      local_hospital
+                      </span>BOOK YOUR APPOINTMENT NOW.</h4>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="section">
+                      <h5><span class="material-icons" style="vertical-align: bottom;">
+                        date_range
+                        </span>On <strong id="dateTime">Mar 05, 2021 at 10:30 AM</strong></h5>
+                  </div>
+                </div>
+
+                <div class="col-sm-12">
+                  <div class="section">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <img src="../images/banner-bg.jpg" class="img-responsive">
+                      </div>
+                      <div class="col-sm-8">
+                        <strong id="doctor-name">Dr.Himanshi mittal</strong>
+                        <p id="doctor-education">MBBS</p>
+                        <p id="doctor-specialization">General Physician</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <form id="confirm-email">
+                <div class="form-group">
+                  <label for="confirm-patient-email">Email address</label>
+                  <input type="email" class="form-control" name="confirm-patient-email" id="confirm-patient-email" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </form>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- mk -->
-
-
-                                <div class="form-row border-bottom p-4 position-relative">
+                                <!-- <div class="form-row border-bottom p-4 position-relative">
                                     <label class="text-inverse font-12 text-uppercase">Booking Date</label>
                                    
                                         <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibookdate">
@@ -256,7 +323,7 @@
                                     <button class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase">
                                         <span>Book Your Appointment Now</span>
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -275,7 +342,7 @@
         <!-- Javascript -->
         <script>
             function confirmSlot(id){
-              document.getElementById("demo").innerHTML = "Hello World";
+                $('#confirm-slot').modal('show');
             }
         </script>
         <script src="../js/jquery-3.3.1.min.js"></script>
