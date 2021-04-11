@@ -1,4 +1,4 @@
-<%- include ('./header1') %>
+<%- include ('../header1') %>
 
 <section>
     <div class="container">
@@ -23,7 +23,7 @@
                                 <input type="text" style="text-align: center;" class="form-control" value="<%=user.id%>" placeholder="<%=user.id%>" name="ismyid" readonly><br>
                                 <input type="text" style="text-align: center;" class="form-control" placeholder="Symptom Name" name="ismyname" ><br>
                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality">
-                                    <%- include ('./list') %>
+                                    <%- include ('../list') %>
                                 </select>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
     </div>
 </section>
 
-<%- include ('./footer') %>
+<%- include ('../footer') %>
 
 <style>
     .nav-link{

@@ -4,17 +4,17 @@ const router = express.Router();
 
 router.get('/adddoc', (req,res)=>{
     var message='';
-    res.render('adddoc',{message:message});
+    res.render('./DOCTORS/adddoc',{message:message});
 })
  
 router.get('/updatedoc', (req, res) => {
     var mes = 0;
-    res.render('updatedoc',{mesa:mes});
+    res.render('./DOCTORS/updatedoc',{mesa:mes});
 });
 
 router.get('/viewdoc', async (req, res) => {
     var mes = 0;
-    res.render('viewdoc',{mesa:mes});
+    res.render('./DOCTORS/viewdoc',{mesa:mes});
 });
 
 /*----------------------------------------------------------------------------------------------------------*/
@@ -29,31 +29,31 @@ router.get('/addmed', async (req, res) => {
     });
     console.log(alluser);
     var message = "";
-    res.render('addmed', {message: message,users: alluser});
+    res.render('./MEDICINE/addmed', {message: message,users: alluser});
 });
 
 router.get('/viewmed', (req, res) => {
     var mesa = "";
-    res.render('viewmed',{mesa:mesa});
+    res.render('./MEDICINE/viewmed',{mesa:mesa});
 });
 
 router.get('/updatemed', (req, res) => {
-    res.render('updatemed');
+    res.render('./MEDICINE/updatemed');
 });
 
 /*----------------------------------------------------------------------------------------------------------*/
 
 router.get('/addsympt', (req, res) => {
     var message = "";
-    res.render('addsympt', { message: message });
+    res.render('./SYMPTOMS/addsympt', { message: message });
 });
 
 router.get('/updatesympt', (req,res)=>{
-    res.render('updatesympt');
+    res.render('./SYMPTOMS/updatesympt');
 });
 
 router.get('/viewsympt', (req, res) => {
-    res.render('viewsympt');
+    res.render('./SYMPTOMS/viewsympt');
 });
 
 module.exports = router;

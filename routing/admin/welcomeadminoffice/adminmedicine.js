@@ -21,7 +21,7 @@ router.post('/addthemedicine',async(req, res) => {
         });
     });
     var message = "Medicine Added SuccessFully";
-    res.render('addmed',{message:message});
+    res.render('./MEDICINE/addmed',{message:message});
 });
 
 router.post('/viewingmedicine', async (req, res) => {
@@ -34,12 +34,12 @@ router.post('/viewingmedicine', async (req, res) => {
         if(user.sortby == 1)
         {
             var meg = 1;
-            res.render('viewmed', { mesa: meg });
+            res.render('./MEDICINE/viewmed', { mesa: meg });
         }
         else if (user.sortby == 2) 
         {
             var meg = 2;
-            res.render('viewmed', { mesa: meg });
+            res.render('./MEDICINE/viewmed', { mesa: meg });
         }
         connection.query(query,(err, result) => {
             if (err) reject(new Error('Something failed (Record Deletion) :' + err));
@@ -47,7 +47,7 @@ router.post('/viewingmedicine', async (req, res) => {
         });
     });  
     var meg = 0;
-    res.render('viewmed',{users:alluser,mesa:meg});
+    res.render('./MEDICINE/viewmed',{users:alluser,mesa:meg});
 });
 
 router.post('/viewmedicinebyname', async (req, res) => {
@@ -74,9 +74,7 @@ router.post('/viewmedicinebyname', async (req, res) => {
         });
     });
     console.log(alluser);
-    res.render('viewmed',{users:alluser,mesa:mes});
+    res.render('./MEDICINE/viewmed',{users:alluser,mesa:mes});
 });
-
-
 
 module.exports = router;

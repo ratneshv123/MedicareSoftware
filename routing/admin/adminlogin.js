@@ -5,12 +5,12 @@ const router = express.Router();
 
 router.post('/adminoffice', (req, res) => {
     var message = '';
-    res.render('adminlogin',{message:message}); 
+    res.render('./ADMIN/adminlogin',{message:message}); 
 });
 
 router.get('/welcomeadmin', (req, res) => {
     var message = '';
-    res.render('inadmin',{message:message}); 
+    res.render('./ADMIN/inadmin',{message:message}); 
 });
 
 router.post('/welcomeadmin', async (req, res) => {
@@ -31,20 +31,20 @@ router.post('/welcomeadmin', async (req, res) => {
             if (result.length === 0)
             {
                 message = "Invalid Username or Password or NULL value obtained";
-                res.render('adminlogin', {message: message});
+                res.render('./ADMIN/adminlogin', {message: message});
             }
             else
             {
                 bcrypt.compare(user.password,result[0].password, (err, result) => {
                     if (result === true) {
                         console.log('success');
-                        res.render('inadmin', {user: user});  
+                        res.render('./ADMIN/inadmin', {user: user});  
                     } 
                     else
                     {
                         console.log('failure');
                         message = "Invalid username or password";
-                        res.render('adminlogin', {message:message});
+                        res.render('./ADMIN/adminlogin', {message:message});
 
                         reject(new Error('Something failed (Record Insertion) :' + err));
                     }

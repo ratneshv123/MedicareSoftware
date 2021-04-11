@@ -21,7 +21,7 @@ router.post('/addthesymptoms',async(req, res) => {
         });
     });
     var message = "Symptom Added SuccessFully";
-    res.render('addsympt',{message:message});
+    res.render('./SYMPTOMS/addsympt',{message:message});
 });
 
 //router for viewing medicines
@@ -42,26 +42,26 @@ router.post('/viewsymptoms', async(req, res) => {
         });
     });
     
-    res.render('updatesympt',{users:alluser});
+    res.render('./SYMPTOMS/updatesympt',{users:alluser});
 });
 
 router.post('/deletethesymptom', async(req, res) => {
     console.log(req.body);
    
     const user = {
-        id: req.body.isymid
+        id: req.body.id
     };
+    console.log(user.id);
     await new Promise((resolve, reject)=> {
         
         const query = `DELETE FROM symptoms WHERE idsymptoms=?`;
-        
         connection.query(query, user.id, (err, result)=> {
             if (err)    reject(new Error('Something failed (Record Deletion) :'+err));
             resolve (result);
         });
     });
     
-    res.render('updatesympt');
+    res.render('./SYMPTOMS/updatesympt');
 });
 
 
@@ -89,7 +89,7 @@ router.post('/updatingsymptom',async(req, res) => {
         speciality:alluser[0].symptomscategory
     };
     
-    res.render('updationinsym',{user:users});
+    res.render('./SYMPTOMS/updationinsym',{user:users});
 });
 
 //letupdate the symptom now
@@ -113,7 +113,7 @@ router.post('/letupdatesymptomdetails',async(req, res) => {
            // console.log(result);
         });
     });
-     res.render('updationinsym', { user: user });
+     res.render('./SYMPTOMS/updationinsym', { user: user });
 });
 
 

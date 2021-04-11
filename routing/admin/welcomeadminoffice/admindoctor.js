@@ -25,7 +25,7 @@ router.post('/addthedoctor', async(req, res) => {
     });
 
     var message= "Doctors Added SuccessFully";
-    res.render('adddoc',{message:message});
+    res.render('./DOCTORS/adddoc',{message:message});
     //res.send('success'); 
 });
 
@@ -39,12 +39,12 @@ router.post('/viewingdr', async (req, res) => {
         if(user.sortby == 1)
         {
             var meg = 1;
-            res.render('viewdoc', { mesa: meg });
+            query = `SELECT * FROM doctors ORDER BY doctorsname`;
         }
         else if (user.sortby == 2) 
         {
             var meg = 2;
-            res.render('viewdoc', { mesa: meg });
+            res.render('./DOCTORS/viewdoc', { mesa: meg });
         }
         else if (user.sortby == 3)
         { 
@@ -57,7 +57,7 @@ router.post('/viewingdr', async (req, res) => {
         });
     });  
     var meg = 0;
-    res.render('viewdoc',{users:alluser,mesa:meg});
+    res.render('./DOCTORS/viewdoc',{users:alluser,mesa:meg});
 });
 
 //router for viewthedr
@@ -71,12 +71,7 @@ router.post('/viewthedr', async (req, res) => {
     var mes = 0;
     const alluser=await new Promise((resolve, reject) => {
         var query = `SELECT * FROM doctors`;
-        if (user.value == 1)
-        {
-            mes = 1;
-            query = `SELECT * FROM doctors where doctorsname=?`;
-        } 
-        else if (user.value == 2)
+        if (user.value == 2)
         {
             mes = 2;
             query = `SELECT * FROM doctors where doctorsspeciality=?`; 
@@ -86,7 +81,7 @@ router.post('/viewthedr', async (req, res) => {
                 resolve(result);
         });
     });
-    res.render('viewdoc',{users:alluser,mesa:mes});
+    res.render('./DOCTORS/viewdoc',{users:alluser,mesa:mes});
 });
 
 
@@ -104,12 +99,12 @@ router.post('/updatingdr', async (req, res) => {
         if(user.sortby == 1)
         {
             var meg = 1;
-            res.render('updatedoc', { mesa: meg });
+            res.render('./DOCTORS/updatedoc', { mesa: meg });
         }
         else if (user.sortby == 2)
         {
             var meg = 2;
-            res.render('updatedoc', { mesa: meg });
+            res.render('./DOCTORS/updatedoc', { mesa: meg });
         }
         else if (user.sortby == 3)
         {
@@ -123,7 +118,7 @@ router.post('/updatingdr', async (req, res) => {
         else if (user.sortby == 5)
         {
             var meg = 5;
-            res.render('updatedoc', { mesa: meg });
+            res.render('./DOCTORS/updatedoc', { mesa: meg });
         }    
         connection.query(query,(err, result) => {
             if (err) reject(new Error('Something failed (Record Deletion) :' + err));
@@ -131,7 +126,7 @@ router.post('/updatingdr', async (req, res) => {
         });
     });  
     var meg = 0;
-    res.render('updatedoc',{users:alluser,mesa:meg});
+    res.render('./DOCTORS/updatedoc',{users:alluser,mesa:meg});
 });
 
 
@@ -166,7 +161,7 @@ router.post('/updatethedr', async (req, res) => {
                 resolve(result);
         });
     });
-    res.render('updatedoc',{users:alluser,mesa:mes});
+    res.render('./DOCTORS/updatedoc',{users:alluser,mesa:mes});
 });
 
 //routes for updating doctor details
@@ -182,7 +177,7 @@ router.post('/updatingdoctordetail', (req, res) => {
         email: req.body.doctorsemail,
         mobno: req.body.doctorsmobno
     }
-    res.render('updationindoc',{user:user}); 
+    res.render('./DOCTORS/updationindoc',{user:user}); 
 });
 
 //router for doctorupdatethe details 
@@ -209,7 +204,7 @@ router.post('/letupdatedoctordetails',async(req, res) => {
            // console.log(result);
         });
     });
-    res.render('updationindoc', { user: user });
+    res.render('./DOCTORS/updationindoc', { user: user });
 });
 
 
@@ -230,7 +225,7 @@ router.post('/deletethedoctor', async(req, res) => {
         });
     });
     const mesa = 0;
-    res.render('updatedoc',{mesa:mesa});
+    res.render('./DOCTORS/updatedoc',{mesa:mesa});
 });
 
 module.exports = router;

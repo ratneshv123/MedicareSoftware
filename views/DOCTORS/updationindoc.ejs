@@ -1,4 +1,4 @@
-<%- include ('./header1') %>
+<%- include ('../header1') %>
 
 <section>
     <div class="container">
@@ -25,13 +25,13 @@
                             <div class="card-body">
                                 <h5 class="card-header" style="background-color: powderblue;text-align: center;">To Change</h5><br>
                                 <input type="text" style="text-align: center;" class="form-control" value="<%=user.id%>" placeholder="<%=user.id%>" name="id" readonly><br>
-                                <input type="text" style="text-align: center;" class="form-control" placeholder="Doctor Name" name="name" ><br>
+                                <input type="text" style="text-align: center;" class="form-control" placeholder="Doctor Name" name="name"><br>
                                 <input type="text" style="text-align: center;" class="form-control" placeholder="Address" name="address"><br>
                                 <input type="text" style="text-align: center;" class="form-control" placeholder="Enter Fees" name="fees"><br>
                                 <input type="text" style="text-align: center;" class="form-control" placeholder="Enter E-Mail" name="email"><br>
                                 <input type="text" style="text-align: center;" class="form-control" placeholder="Enter Contact" name="mobno"><br>
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality">
-                                    <%- include ('./list') %>
+                                    <%- include ('../list') %>
                                 </select>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
     </div>
 </section>
 
-<%- include ('./footer') %>
+<%- include ('../footer') %>
 
 <style>
     .nav-link{

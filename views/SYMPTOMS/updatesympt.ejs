@@ -1,4 +1,4 @@
-<%- include ('./header1') %>
+<%- include ('../header1') %>
 
 <section>
     
@@ -11,7 +11,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="validationDefault03">View By Specialisation</label>
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="idrspeciality">
-                            <%- include ('./list') %>
+                            <%- include ('../list') %>
                         </select>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                           <% users.forEach((user)=> { %>
                             <tr>
                             <form  method="POST">
-                                <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" name="id" value="<%-user.idsymptoms%>" readonly></td>
+                                <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" name="id" value="<%=user.idsymptoms%>" readonly></td>
                                 <td id = "style_id"><input type="text" name="name" value="<%-user.symptomsname%>" readonly></td>
                                 <td id = "style_id"><button type="submit" formaction="/updatingsymptom" class="btn btn-danger">Click here</button></td>
                                 <td id = "style_id"><button type="submit" formaction="/deletethesymptom" class="btn btn-primary">Delete</button></td>
@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<%- include ('./footer') %>
+<%- include ('../footer') %>
 
 <style>
     .nav-link{
