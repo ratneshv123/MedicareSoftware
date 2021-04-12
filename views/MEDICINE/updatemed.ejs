@@ -1,5 +1,66 @@
 <%- include ('../header1') %>
 
+<section>
+    <div class="container">
+        <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+            <h5 class="card-header" style="background-color: powderblue;">Search Medcine</h5>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label>Choose Searching Method</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="iprefname">
+                                <option selected>Choose Searching Method</option>
+                                <option value="3">View All Medicine</option>
+                                <option value="1">Sort By Medicine name</option>
+                                <option value="2">Sort By Symptom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger" style="margin-top: 30px;" formaction="/updatingmedicine" type="submit">Submit</button>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>        
+    </div>
+</section>
+<section class="container">
+    <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+        <h5 class="card-header" style="background-color: powderblue; text-align: center;">Medcine List</h5>
+        <div class="card-body">
+            <table class="table table-dark" style="background-color: powderblue;">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">USAGE</th>
+                        <th scope="col">SYMPTOM</th>
+                        <th scope="col">UPDATE</th>
+                        <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(typeof users !=='undefined') { %>
+                        <% users.forEach((user)=> { %>
+                            <tr>
+                                <form method="POST">
+                                <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" name="medicineid" value="<%= user.idmedicine %>" readonly></td>
+                                <td id = "style_id"><input type="text" name="medicinename" value="<%= user.medicinename%>" readonly></td>
+                                <td id = "style_id"><input type="text" name="medicineusage" value="<%= user.medicineusage %>" readonly></td>
+                                <td id = "style_id"><input type="text" style="width: 60px;text-align: center;" name="symptomname" value="<%= user.symtomtype%>" readonly></td>
+                                <td id = "style_id"><button type="submit" formaction="/updatethemedicine" class="btn btn-danger">Click here</button></td>
+                                <td id = "style_id"><button type="submit" formaction="/deletethemedicine" class="btn btn-primary">Delete</button></td>
+                            </form>
+                            </tr>
+                        <% }) %>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 <%- include ('../footer') %>
 
 <style>

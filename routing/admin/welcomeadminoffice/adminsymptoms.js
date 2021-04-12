@@ -117,5 +117,19 @@ router.post('/letupdatesymptomdetails',async(req, res) => {
 });
 
 
+//viewing all symptoms
+
+router.post('/viewingallsymptom',async(req, res) => {
+
+    const alluser=await new Promise((resolve, reject)=> {
+        const query = `SELECT idsymptoms,symptomsname,symptomscategory FROM symptoms`;
+        connection.query(query, (err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Deletion) :'+err));
+            resolve (result);
+        });
+    });
+    res.render('./SYMPTOMS/viewsympt',{users:alluser});
+    // res.send('success');
+});
 
 module.exports = router;
