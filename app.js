@@ -10,6 +10,7 @@ const adminmedicine = require('./routing/admin/welcomeadminoffice/adminmedicine'
 const adminsymptoms = require('./routing/admin/welcomeadminoffice/adminsymptoms');
 const inpatients = require('./routing/patients/inpatients');
 const makeappoinment = require('./routing/patients/appoinment/makeappoinment');
+const signupdoc = require('./routing/signup/signupdoc');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,5 +28,6 @@ app.use(admindoctor);
 app.use(adminmedicine);
 app.use(adminsymptoms);
 app.use(makeappoinment);
+app.use(signupdoc);
 
 app.listen(3000, ()=>console.log("Listening on port 3000"));

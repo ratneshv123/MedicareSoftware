@@ -52,7 +52,7 @@
         </div>
         
         <div id="London" class="w3-container city" style="margin-top: -50px;">
-            <form class="modal-content animate" action="/signin" method="POST">
+            <form class="modal-content animate" action="/signindoc" method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
                     <br><h1 style="text-align:center;font-weight: bolder;">LOGIN for DOCTORS</h1>
@@ -63,7 +63,7 @@
                     <input type="password" placeholder="Enter Password" name="ipassword" style="width: 90%;padding: 12px 20px;margin: 8px 26px;display: inline-block;border: 1px solid #ccc;box-sizing: border-box;font-size: 16px;">      
                     <label id = "label2" style="visibility: hidden;">Incorrect Password</label>
                     <button type="submit" style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 26px;border: none;cursor: pointer;width: 90%;font-size:20px;">Login</button>
-                    <a href="/signup" style="text-decoration:none; float:left; margin-left:34px; margin-top:26px;">New User</a>   
+                    <a href="/signupdoc" style="text-decoration:none; float:left; margin-left:34px; margin-top:26px;">New User</a>   
                     <a href="#" style="text-decoration:none; float:right; margin-right:34px; margin-top:26px;">Forgot Password ?</a>
                 </div>
             </form>
@@ -140,7 +140,7 @@
     <section>
         <div class="row">
             <div class="col-md-3" style="height: 200px; background-color:#263b51;">
-                <p style="margin-top: 55px;margin-left: 100px; font-weight: bolder; color: white;font-size: 2rem;">MAKE AN <br> APPOINMENT</p>
+                <p style="margin-top: 55px;margin-left: 70px; font-weight: bolder; color: white;font-size: 2rem;">MAKE AN <br> APPOINMENT</p>
             </div>
             <div class="col-md-9" style="background-color: #008fd5;">
                 <form> 
@@ -293,11 +293,10 @@
 
     .address .fa{
         color: #da3e44;
-        margin-right: 10px;
         font-size:18px;
     }
 
-<!---------------------------------------------------------------------------------------------->
+/*--------------------------------------------------------------------------------------------------------*/
 
 button:hover {
     opacity: 0.8;
@@ -359,8 +358,6 @@ button:hover {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-
-<!----------------------------------------------------------------------------------------------------->
 
 </style>
 

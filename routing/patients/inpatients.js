@@ -25,7 +25,7 @@ router.get('/welcomeuser', async(req,res)=>{
         });
     });
     console.log(alluser1,alluser2,alluser3);
-    res.render('welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3});
+    res.render('./PATIENT/welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3});
 });
 
 router.get('/viewdocforpat', async(req,res)=>{
@@ -37,11 +37,11 @@ router.get('/viewdocforpat', async(req,res)=>{
         });
     });
     console.log(alluser1);
-    res.render('ViewDocPatient',{users:alluser1});
+    res.render('./PATIENT/ViewDocPatient',{users:alluser1});
 });
 
 router.get('/yourprofile', (req,res)=>{
-    res.render('viewpatient');
+    res.render('./PATIENT/viewpatient');
 });
 
 module.exports = router;

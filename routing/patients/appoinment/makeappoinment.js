@@ -13,7 +13,7 @@ router.get('/makeanappoinment', async (req, res) => {
         });
     });
     console.log(alldoctor);
-    res.render('makeanappoint',{ users: alldoctor,dates:message,value:message});
+    res.render('./PATIENT/makeanappoint',{ users: alldoctor,dates:message,value:message});
 });
 
 router.post('/resetdr', async (req, res) => {
@@ -33,7 +33,7 @@ router.post('/resetdr', async (req, res) => {
         });
     });
     console.log(alldoctor);
-    res.render('makeanappoint',{ users: alldoctor,dates:message,value:user});
+    res.render('./PATIENT/makeanappoint',{ users: alldoctor,dates:message,value:user});
 });
 
 router.post('/abcde', async(req, res) => {
@@ -66,7 +66,7 @@ router.post('/abcde', async(req, res) => {
     // const alldoctor = req.body.iprefname;
     console.log(alldoctor);
     console.log(date[0]);
-    res.render('makeanappoint',{users:alldoctor,dates:date,value:user});
+    res.render('./PATIENT/makeanappoint',{users:alldoctor,dates:date,value:user});
 });
 
 
