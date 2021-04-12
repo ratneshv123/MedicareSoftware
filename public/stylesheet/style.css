@@ -263,5 +263,9 @@ h6 {
     cursor: pointer;
 }
 
-
+.section {
+    padding: 10px;
+    border-bottom: solid 1px rgb(211, 210, 210);
+    font-weight: lighter;
+}
 /* ended */

@@ -77,17 +77,12 @@ router.post('/checktime', (req, res) => {
         lastname:req.body.ilastname,
         email:req.body.iemail,
         mobno:req.body.imobno,
-        prefdoc:req.body.iprefname,
-        prefdate:req.body.ibookdate
-    };
+        prefdoc:req.body.iprefname,      
+        prefdate:req.body.ibookdate 
+    };    
     console.log(user);
     res.send('success');
 });
-
-
-// appointment mayur 
-
-
 
 
 module.exports = router;
