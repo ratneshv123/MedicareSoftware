@@ -9,13 +9,16 @@ router.get('/signupdoc', (req,res)=>{
 });
 
 router.post('/signupdocform', async(req, res) => {
-    console.log(req.body);
+    console.log(req.body);       
     const user = { 
         signindocname: req.body.ifname,
         signindocemail: req.body.iemail,
         signindocmob: req.body.imobno,
+        signindocspeciality: req.body.idrspeciality,
+        signindocaddress: req.body.iaddress,
         signindocusername: req.body.iusername,
-        signindocpassword: req.body.ipassword
+        signindocpassword: req.body.ipassword,
+        signindocfees: req.body.ifees
     };
     
     //added hashing for bcrypting password
@@ -40,6 +43,7 @@ router.post('/signupdocform', async(req, res) => {
         });
     });
     res.render('signupdoc',{message:message});
+    // res.send('success');
 });
 
 
@@ -52,7 +56,7 @@ router.post('/signindoc', async (req, res) => {
     };
 
     await new Promise((resolve, reject) => {
-        const query = `SELECT signindocpassword FROM signindoc WHERE signindocusername=?`;
+        const query = `SELECT doctorspassword FROM doctors WHERE doctorsusername=?`;
         connection.query(query,user.name, (err, result) => {
             if (err) {
                 res.status(404).send(`Not Found` + err);
@@ -67,7 +71,7 @@ router.post('/signindoc', async (req, res) => {
             }
             else
             {
-                bcrypt.compare(user.password,result[0].signindocpassword, (err, result) => {
+                bcrypt.compare(user.password,result[0].doctorspassword, (err, result) => {
                     if (result === true) {
                         console.log('success');
                         res.render('doctorspage.ejs');

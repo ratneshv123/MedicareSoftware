@@ -9,7 +9,7 @@ router.get('/signup', (req,res)=>{
 });
 
 router.post('/signupform', async(req, res) => {
-    console.log(req.body);
+    console.log(req.body);    
     const user = { 
         firstname: req.body.ifname,
         middlename: req.body.imname,
