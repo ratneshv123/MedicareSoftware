@@ -72,7 +72,8 @@ router.post('/signin', async (req, res) => {
                 bcrypt.compare(user.password,result[0].password, (err, result) => {
                     if (result === true) {
                         console.log('success');
-                        res.redirect('/welcomeuser');
+                        var string = encodeURIComponent(req.body.iusername);
+                        res.redirect('/welcomeuser?valid=' + string);
                     } 
                     else
                     {

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+    <head>
+		<!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>Complete your profile</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="../stylesheet/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="../stylesheet/animate.css">
+        <link rel="stylesheet" href="../stylesheet/styleMERO.css">
+        <link rel="stylesheet" href="../stylesheet/media-queries.css">
+        <link rel="stylesheet" href="../stylesheet/style.css">
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+
+    <body>
+
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="logo">
+                <h3><a href="index.html">Bootstrap 4 Template with Sidebar Menu</a></h3>
+            </div>
+            <ul class="list-unstyled menu-elements">
+                <li class="active">
+                    <a href="/welcomeuser"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a href="/viewdocforpat"><i class="fas fa-user-md"></i> Our Doctors</a>
+                </li>
+                <li>
+                    <a href="/yourprofile"><i class="fas fa-user"></i> Your Profile</a>
+                </li>
+                <li>
+                    <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                        <i class="fas fa-sync"></i>Our Services 
+                    </a>
+                    <ul class="collapse list-unstyled" id="otherSections">
+                        <li>
+                            <a href="/makeanappoinment"><i class="fas fa-calendar-check"></i> Make an Appointment</a>
+                        </li>
+                        <li>
+                            <a href="/consultus"><i class="fas fa-headset"></i>Consult Us</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="to-top">
+                <a class="btn btn-primary btn-customized-3" href="#" role="button">
+                    <i class="fas fa-arrow-up"></i> Top
+                </a>
+            </div>    
+        </nav>
+            <div class="overlay"></div>
+                <div class="content">
+                    <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+                        <i class="fas fa-align-left"></i> <span>Menu</span>
+                    </a>
+                    <a class="btn btn-primary btn-customized open-menu1" href="/" role="button">
+                        <i class="fas fa-sign-out-alt"></i><span>Log Out</span>
+                    </a>
+
+    <% if (message.length > 0) { %>
+        <div class="alert alert-success col-sm-12" style="text-align: center;"><%= message %></div>
+    <% } %>
+
+    <section>
+        <div class="container">
+            <div class="card" style="margin-top: 117px; margin-bottom: 40px;">
+                <h5 class="card-header" style="background-color: powderblue;">Complete Your Profile</h5>
+                <div class="card-body">
+                    <form action="/donecompleting" method="post"> 
+                        <div class="form-row" style="margin: 40px;">
+                            <div class="col-md-6">
+                                <label style="font-weight: 700;" for="validationDefault01">Your Age</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Put your age in numbers" name="iage" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label style="font-weight: 700;" for="validationDefault01">Gender</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Male/Female/Others" name="igender" >
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin: 40px;">
+                            <div class="col-md-6">
+                                <label style="font-weight: 700;" for="validationDefault01">Height</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Put your height in CMs" name="iheight" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label style="font-weight: 700;" for="validationDefault01">Weight</label>
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="Put your weight in KGs" name="iweight" >
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin: 40px;">
+                            <button class="btn btn-primary" type="submit" style="width: 300px;">SIGN UP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>        
+        </div>
+    </section>
+        </div>
+    </div>
+    <!-- End wrapper -->
+
+    <!-- Javascript -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="../js/jquery.backstretch.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/jquery.waypoints.min.js"></script>
+    <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <%- include ('../footer') %>
+
+<style>
+    .card-title{
+        color: snow;
+    }
+    .work{
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: xx-large;
+        color: snow;
+    }
+    .mycard:hover{
+        background-color: coral !important;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+    .mylabel{
+        font-family: 'Nunito', sans-serif;
+        float: left;
+        font-size: 32px;
+        color: rgb(60, 60, 60);
+        font-weight: 700;
+        border-bottom: 2px solid rgb(60, 60, 60);
+    }
+</style>

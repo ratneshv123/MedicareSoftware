@@ -2,7 +2,10 @@ const express = require('express');
 const connection = require('../../db/db');
 const router = express.Router();
 
+var session = '';
+
 router.get('/welcomeuser', async(req,res)=>{
+    var passedvalue = req.query.valid;
     const alluser1 = await new Promise((resolve, reject) => {
         const query = `select count(idappointment) as value1 from appointment`;
         connection.query(query, (err, result) => {
@@ -24,8 +27,17 @@ router.get('/welcomeuser', async(req,res)=>{
             resolve(result);
         });
     });
-    console.log(alluser1,alluser2,alluser3);
-    res.render('./PATIENT/welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3});
+    const alluser4 = await new Promise((resolve, reject) => {
+        const query = `select * from signin where username=?`;
+        connection.query(query,passedvalue,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    session = alluser4[0].username;
+    console.log(session);
+    console.log(alluser1,alluser2,alluser3,alluser4);
+    res.render('./PATIENT/welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3,value4: alluser4});
 });
 
 router.get('/viewdocforpat', async(req,res)=>{
@@ -40,8 +52,40 @@ router.get('/viewdocforpat', async(req,res)=>{
     res.render('./PATIENT/ViewDocPatient',{users:alluser1});
 });
 
-router.get('/yourprofile', (req,res)=>{
-    res.render('./PATIENT/viewpatient');
+router.get('/yourprofile', async(req,res)=>{
+    const alluser1 = await new Promise((resolve, reject) => {
+        const query = `select * from signin where username = ?`;
+        connection.query(query,session, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    console.log(alluser1);
+    res.render('./PATIENT/viewpatient',{value1:alluser1});
 });
+
+router.post('/completeprofile',(req,res)=>{
+    var message='';
+    res.render('./PATIENT/completeprofile',{message:message});
+})
+
+router.post('/donecompleting', async(req,res)=>{
+    const user = {
+        age: req.body.iage,
+        gender: req.body.igender,
+        height: req.body.iheight,
+        weight: req.body.iweight,
+        username: session
+    };
+    const data = [[user.age], [user.gender], [user.height], [user.weight],[user.username]];
+    await new Promise((resolve, reject) => {
+        const query = `UPDATE signin SET age=? , Gender=? , Height=? , Weight=? WHERE username=?`;
+        connection.query(query,data, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+        res.redirect('/yourprofile');
+    });
+})
 
 module.exports = router;

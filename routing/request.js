@@ -43,7 +43,6 @@ router.post('/acceptdoctor', async (req, res) => {
         });     
     });
     console.log(alluser);
-    // console.log(alluser[0].signindocname);
 
     const user = {
         doctorsname: req.body.doctorname,
@@ -65,7 +64,6 @@ router.post('/acceptdoctor', async (req, res) => {
     });
 
     await new Promise((resolve, reject)=> {
-        //console.log(this);
         const query = `DELETE FROM signindoc WHERE idsignindoc=?`;
         connection.query(query,req.body.doctorid, (err, result)=> {
             if (err)    reject(new Error('Something failed (Record Deletion) :'+err));
@@ -73,8 +71,7 @@ router.post('/acceptdoctor', async (req, res) => {
         });
     });
 
-     res.redirect('/viewrequest');
-    //res.send('success');
+    res.redirect('/viewrequest');
 });
 
 
