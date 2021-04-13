@@ -6,6 +6,8 @@ var session = '';
 
 router.get('/welcomeuser', async(req,res)=>{
     var passedvalue = req.query.valid;
+    if(session.length==0)
+        session = passedvalue;
     const alluser1 = await new Promise((resolve, reject) => {
         const query = `select count(idappointment) as value1 from appointment`;
         connection.query(query, (err, result) => {
@@ -29,7 +31,7 @@ router.get('/welcomeuser', async(req,res)=>{
     });
     const alluser4 = await new Promise((resolve, reject) => {
         const query = `select * from signin where username=?`;
-        connection.query(query,passedvalue,(err, result) => {
+        connection.query(query,session,(err, result) => {
             if (err) reject(new Error('Something Went Wrong+:' + err));
             resolve(result);
         });
@@ -48,8 +50,15 @@ router.get('/viewdocforpat', async(req,res)=>{
             resolve(result);
         });
     });
+    const alluser4 = await new Promise((resolve, reject) => {
+        const query = `select * from signin where username=?`;
+        connection.query(query,session,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
     console.log(alluser1);
-    res.render('./PATIENT/ViewDocPatient',{users:alluser1});
+    res.render('./PATIENT/ViewDocPatient',{users:alluser1,value4:alluser4});
 });
 
 router.get('/yourprofile', async(req,res)=>{
@@ -60,8 +69,15 @@ router.get('/yourprofile', async(req,res)=>{
             resolve(result);
         });
     });
+    const alluser4 = await new Promise((resolve, reject) => {
+        const query = `select * from signin where username=?`;
+        connection.query(query,session,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
     console.log(alluser1);
-    res.render('./PATIENT/viewpatient',{value1:alluser1});
+    res.render('./PATIENT/viewpatient',{value1:alluser1,value4: alluser4});
 });
 
 router.post('/completeprofile',(req,res)=>{
