@@ -25,77 +25,73 @@ router.get('/makeanappoinment', async (req, res) => {
     }
     const date = datearray;
     console.log(alldoctor);
-    res.render('./PATIENT/makeanappoint',{ users: alldoctor,dates:date,value:message});
+    res.render('./PATIENT/makeanappoint',{ users: alldoctor,dates:date,value:message,value4:message});
 });
 
 
 
-// router.post('/resetdr', async (req, res) => {
-//     const user = {
-//         firstname: req.body.ifirstname,
-//         lastname:req.body.ilastname,
-//         email:req.body.iemail,
-//         mobno:req.body.imobno,
-//         prefdoc:req.body.iprefname,
-//     };
-//     const alldoctor=await new Promise((resolve, reject) => {
-//         const query = `select doctorsname from doctors`;
-//         connection.query(query, (err, result) => {
-//             if (err) reject(new Error('Something Went Wrong+:' + err));
-//             resolve(result);
-//         });
-//     });
-//     console.log(alldoctor);
-//     res.render('./PATIENT/makeanappoint',{users: alldoctor});
-// });
+router.post('/checkavail', async (req, res) => {
+    console.log(req.body);
+    const user = {
+        patientname: req.body.ifullname,
+        appointmentemail:req.body.iemail,
+        appointmentmobno:req.body.imobno,
+        doctorname:req.body.iprefname,      
+        appointmentdate:req.body.ibookdate,
+        appointmenttime:req.body.ibooktime
+    };
+    const data = [[user.appointmentdate],[user.doctorname]];
+    const alldates = await new Promise((resolve, reject) => {
+        const query = `select timeslotscat from timeslots where timeslotscat not in (select timeslotscat from timeslots inner join appointment on appointment.appointmenttime = timeslots.timeslotscat where appointmentdate = ? and doctorname=?)`;
+        connection.query(query,data,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    var message = "";
+    const alldoctor=await new Promise((resolve, reject) => {
+        const query = `select doctorsname from doctors`;
+        connection.query(query, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var datearray = [];
+    for(var i=0;i<5;i++)
+    {
+        today = dd + '/' + mm + '/' + yyyy;
+        datearray[i] = today;
+        dd++;
+    }
+    const date = datearray;
+    console.log(user);
+    res.render('./PATIENT/makeanappoint',{value4: alldates,value:user,dates:date,users:alldoctor});
+});
 
-// router.post('/abcde', async(req, res) => {
-//     const user = {
-//         firstname: req.body.ifirstname,
-//         lastname:req.body.ilastname,
-//         email:req.body.iemail,
-//         mobno:req.body.imobno,
-//         prefdoc:req.body.iprefname,
-//     };
-//     var today = new Date();
-//     var dd = String(today.getDate()).padStart(2, '0');
-//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-//     var yyyy = today.getFullYear();
-//     var datearray = [];
-//     for(var i=0;i<5;i++)
-//     {
-//         today = dd + '/' + mm + '/' + yyyy;
-//         datearray[i] = today;
-//         dd++;
-//     }
-//     const date = datearray;
-//     const alldoctor=await new Promise((resolve, reject) => {
-//             const query = `select doctorsname from doctors where doctorsname=?`;
-//             connection.query(query,user.prefdoc ,(err, result) => {
-//                     if (err) reject(new Error('Something Went Wrong+:' + err));
-//                     resolve(result);
-//                 });
-//              });
-//     // const alldoctor = req.body.iprefname;
-//     console.log(alldoctor);
-//     console.log(date[0]);
-//     res.render('./PATIENT/makeanappoint',{users:alldoctor,dates:date,value:user});
-// });
-
-
-// router.post('/checktime', (req, res) => {
-//     console.log(req.body);
-//     const user = {
-//         firstname: req.body.ifirstname,
-//         lastname:req.body.ilastname,
-//         email:req.body.iemail,
-//         mobno:req.body.imobno,
-//         prefdoc:req.body.iprefname,      
-//         prefdate:req.body.ibookdate 
-//     };    
-//     console.log(user);
-//     res.send('success');
-// });
+router.post('/bookappoin', async(req, res) => {
+    console.log(req.body);
+    var message = "";
+    const user = {
+        patientname: req.body.ifullname,
+        appointmentemail:req.body.iemail,
+        appointmentmobno:req.body.imobno,
+        doctorname:req.body.iprefname,      
+        appointmentdate:req.body.ibookdate,
+        appointmenttime:req.body.ibooktime
+    };
+    await new Promise((resolve, reject) => {
+        const query = `INSERT into appointment SET ?`;
+        connection.query(query,user,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    res.redirect('/makeanappoinment');
+});
 
 
 module.exports = router;

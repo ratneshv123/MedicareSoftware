@@ -87,63 +87,58 @@
                     <div class="row">
                         <div class="col-md-7 col-lg-5">
                             <h3 class="my-3 text-white font-weight-medium text-uppercase">Book Appointment</h3>
-                            <div class="bg-white">
-                                <div class="form-row border-bottom">
-                                    <div class="p-4 left border-right w-50">
-                                        <label class="text-inverse font-12 text-uppercase">First Name</label>
-                                        <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Your First Name" name="ifirstname" value="<%=value.firstname%>">
+                            <form method="POST">
+                                <div class="bg-white">
+                                    <div class="form-row border-bottom p-4">
+                                        <label class="text-inverse font-12 text-uppercase">Full Name</label>
+                                        <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Your Full Name" name="ifullname" value="<%=value.patientname%>">
                                     </div>
-                                    <div class="p-4 right w-50">
-                                        <label class="text-inverse font-12 text-uppercase">Last Name</label>
-                                        <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Your Last Name" name="ilastname" value="<%=value.lastname%>">
+                                    <div class="form-row border-bottom p-4">
+                                        <label class="text-inverse font-12 text-uppercase">Email Address</label>
+                                        <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Email Address" name="iemail" value="<%=value.appointmentemail%>">
                                     </div>
-                                </div>
-                                <div class="form-row border-bottom p-4">
-                                    <label class="text-inverse font-12 text-uppercase">Email Address</label>
-                                    <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Email Address" name="iemail" value="<%=value.email%>">
-                                </div>
-                                <div class="form-row border-bottom p-4">
-                                    <label class="text-inverse font-12 text-uppercase">Phone Number</label>
-                                    <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Phone Number" name="imobno" value="<%=value.mobno%>">
-                                </div>
-                                <div class="form-row border-bottom p-4">
-                                    <label class="text-inverse font-12 text-uppercase">Choose Doctor</label>
-                                    <select class="form-control" id="inlineFormCustomSelect" name="iprefname" value="<%=value.prefdoc%>">
-                                        <% if(typeof users !=='undefined') { %>
-                                            <% users.forEach((user)=> { %>
-                                                    <option selected><%-user.doctorsname%></option>
-                                            <% }) %>
-                                        <%}%>
-                                    </select>
-                                </div>
-
-                                <div class="form-row border-bottom p-4 position-relative">
-                                    <label class="text-inverse font-12 text-uppercase">Booking Date</label>
-                                        <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibookdate">
-                                            <option selected>Available Dates</option>
-                                            <option ><%=dates[0]%></option>
-                                            <option ><%=dates[1]%></option>
-                                            <option ><%=dates[2]%></option>
-                                            <option ><%=dates[3]%></option>
-                                            <option ><%=dates[4]%></option>
+                                    <div class="form-row border-bottom p-4">
+                                        <label class="text-inverse font-12 text-uppercase">Phone Number</label>
+                                        <input type="text" class="border-0 p-0 font-14 form-control" placeholder="Enter your Phone Number" name="imobno" value="<%=value.appointmentmobno%>">
+                                    </div>
+                                    <div class="form-row border-bottom p-4">
+                                        <label class="text-inverse font-12 text-uppercase">Choose Doctor</label>
+                                        <select class="form-control" id="inlineFormCustomSelect" name="iprefname" value="<%=value.doctorname%>">
+                                            <% if(typeof users !=='undefined') { %>
+                                                <% users.forEach((user)=> { %>
+                                                        <option selected><%-user.doctorsname%></option>
+                                                <% }) %>
+                                            <%}%>
                                         </select>
-                                </div>
+                                    </div>
 
-                                <div class="form-row border-bottom p-4 position-relative">
-                                    <label class="text-inverse font-12 text-uppercase">Appointment Time</label>
-                                    <label class="text-inverse font-12" style="font-size: 13px;"> Choose btw two time slots, then doc will give you his prefered time if the appoinment is accepted by the doctor.</label>
-                                    <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibooktime">
-                                        <option selected>Choose your prefered time...</option>
-                                        <option >10:00 AM - 03:00 PM </option>
-                                        <option >5:00  PM - 8:00 PM </option>
-                                    </select>
-                                </div>
-                                <form method="POST" action="/bookappoint">
-                                    <button type="button" class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase" data-toggle="modal" data-target="#appointment-slots">
+                                    <div class="form-row border-bottom p-4 position-relative">
+                                        <label class="text-inverse font-12 text-uppercase">Booking Date</label>
+                                            <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibookdate" value=<%=value.appointmentdate%>
+                                                <option selected>Available Dates</option>
+                                                <option ><%=dates[0]%></option>
+                                                <option ><%=dates[1]%></option>
+                                                <option ><%=dates[2]%></option>
+                                                <option ><%=dates[3]%></option>
+                                                <option ><%=dates[4]%></option>
+                                            </select>
+                                    </div>
+                                    <button formaction="/checkavail" type="submit" class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase">Click to see availability</button>
+                                    <div class="form-row border-bottom p-4 position-relative">
+                                        <label class="text-inverse font-12 text-uppercase">Appointment Time</label>
+                                        <label class="text-inverse font-12" style="font-size: 13px;"> Choose btw two time slots, then doc will give you his prefered time if the appoinment is accepted by the doctor.</label>
+                                        <select class="border-0 p-0 font-14 form-control" id="inlineFormCustomSelect" name="ibooktime">
+                                            <option selected>Choose your prefered time...</option>
+                                            <% for(var i=0;i<value4.length;i++) { %>
+                                                <option><%= value4[i].timeslotscat %></option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <button formaction="/bookappoin" type="submit" class="m-0 border-0 py-4 font-14 font-weight-medium btn btn-danger-gradiant btn-block position-relative rounded-0 text-center text-white text-uppercase" data-toggle="modal" data-target="#appointment-slots">
                                         <span>Book Your Appointment Now</span>
                                     </button>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
