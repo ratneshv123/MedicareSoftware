@@ -393,10 +393,66 @@ router.post('/viewdoctorpatientdetails',async(req, res) => {
         });
     });
 
-    console.log('hellllll');
-    console.log(alluser1);
-    console.log('hellllll');
     res.render('tocheckapppatientdetails',{users:alluser1,message:alluser[0].doctorname});
+    // res.send('success');
+});
+
+
+router.post('/doctorsmainprofile',async(req, res) => {
+    console.log(req.body);
+    const alluser=await new Promise((resolve, reject) => {
+        const query = `select * from doctors where doctorsname=?`;
+        connection.query(query,req.body.username,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    console.log(alluser);
+    res.render('todoctorsmainprofile',{users:alluser,message:req.body.username});
+});
+
+router.post('/updatethedoctordetails', async(req, res) => {
+    console.log(req.body);
+    const alluser=await new Promise((resolve, reject) => {
+        const query = `select doctorsname from doctors where doctorsid=?`;
+        connection.query(query,req.body.id,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    console.log(alluser);
+   
+    const user = {
+        id: req.body.id,
+        name: req.body.name,
+        address: req.body.address,
+        email: req.body.email,
+        contact: req.body.contact,
+        speciality:req.body.speciality,
+        fees: req.body.fees
+    };    
+    const data = [[user.name], [user.address],[user.email],[user.contact],  [user.speciality], [user.fees],[user.id]];
+
+    await new Promise((resolve, reject)=> {
+        //console.log(this);
+        const query = `UPDATE doctors SET doctorsname=? , doctorsaddress=? , doctorsemail=? , doctorscontact=?, doctorsspeciality=? ,doctorsfees=?   WHERE doctorsid=? `;
+        connection.query(query,data,(err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Updation) :'+err));  
+            resolve(result);
+           // console.log(result);
+        });
+    });
+
+
+    const alluser1=await new Promise((resolve, reject) => {
+        const query = `select * from doctors where doctorsid=?`;
+        connection.query(query,req.body.id,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+
+    res.render('todoctorsmainprofile',{users:alluser1,message:alluser[0].doctorsname});
     // res.send('success');
 });
 
