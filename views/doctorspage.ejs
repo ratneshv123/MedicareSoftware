@@ -63,8 +63,9 @@
       </div>
     </div>
     
-    <form method="POST" action="/papersuser">
+    <form method="POST" action="/confirmedappointments">
         <a  class="sidebar-links" >
+            <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
             <div class="sidebar-logo">
               <span class="material-icons" style="vertical-align: middle">
                 article
@@ -82,8 +83,9 @@
         </a>
     </form>
 
-    <form method="POST" action="/availablebooks">
+    <form method="POST" action="/allpreviousrecords">
         <a href="#" class="sidebar-links">
+            <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
           <div class="sidebar-logo">
             <span class="material-icons" style="vertical-align: middle" >
               library_books

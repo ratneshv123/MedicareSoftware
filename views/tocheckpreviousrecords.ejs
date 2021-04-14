@@ -112,7 +112,7 @@
       <div class="col-md">
         <div class="info-box">
             <div class="card" style="margin-top: 10px; margin-bottom: 10px;">
-                <h5 class="card-header" style="background-color: powderblue; text-align: center;">PATIENTS APPOINTMENT REQUESTS</h5>
+                <h5 class="card-header" style="background-color: powderblue; text-align: center;">PATIENTS PREVIOUS APPOINTMENT RECORDS</h5>
                 <div class="card-body">
                     <table class="table table-dark" style="background-color: powderblue;">
                         <thead>
@@ -123,8 +123,7 @@
                             <th scope="col">TIME</th>
                             <th scope="col">EMAIL</th>
                             <th scope="col">MOBILE NO</th>
-                            <th scope="col">ACCEPT</th>
-                            <th scope="col">REJECT</th>
+                            <th scope="col">DELETE</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,9 +137,8 @@
                                         <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" name="time" value="<%= user.appointmenttime%>" readonly></td>
                                         <td id = "style_id"><input type="text" name="email" value="<%= user.appointmentemail%>" readonly></td>
                                         <td id = "style_id"><input type="text" style="width: 100px;text-align: center;" name="mobno" value="<%= user.appointmentmobno%>" readonly></td>
-                                        <td id = "style_id"><button type="submit" formaction="/acceptappointmentreq" class="btn btn-danger">Accept</button></td>
-                                        <td id = "style_id"><button type="submit" formaction="/rejectappointmentreq" class="btn btn-primary">Reject</button></td>
-                                        </form>
+                                        <td id = "style_id"><button type="submit" formaction="/deltingpatientrecords" class="btn btn-danger">Delete</button></td>
+                                         </form>
                                     </tr>
                                 <% }) %>
                             <%}%>

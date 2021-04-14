@@ -111,43 +111,69 @@
     <div class="row">
       <div class="col-md">
         <div class="info-box">
-            <div class="card" style="margin-top: 10px; margin-bottom: 10px;">
-                <h5 class="card-header" style="background-color: powderblue; text-align: center;">PATIENTS APPOINTMENT REQUESTS</h5>
-                <div class="card-body">
-                    <table class="table table-dark" style="background-color: powderblue;">
-                        <thead>
-                            <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">PATIENT NAME</th>
-                            <th scope="col">DATE</th>
-                            <th scope="col">TIME</th>
-                            <th scope="col">EMAIL</th>
-                            <th scope="col">MOBILE NO</th>
-                            <th scope="col">ACCEPT</th>
-                            <th scope="col">REJECT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if(typeof users !=='undefined') { %>
-                                <% users.forEach((user)=> { %>
-                                    <tr>
-                                        <form method="post">
-                                        <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" name="id" value="<%=user.idappointment%>" readonly></td>
-                                        <td id = "style_id"><input type="text" name="name" value="<%= user.patientname%>" readonly></td>
-                                        <td id = "style_id"><input type="text" style="width: 100px;text-align: center;" name="date" value="<%= user.appointmentdate%>" readonly></td>
-                                        <td id = "style_id"><input type="text" style="width: 25px;text-align: center;" name="time" value="<%= user.appointmenttime%>" readonly></td>
-                                        <td id = "style_id"><input type="text" name="email" value="<%= user.appointmentemail%>" readonly></td>
-                                        <td id = "style_id"><input type="text" style="width: 100px;text-align: center;" name="mobno" value="<%= user.appointmentmobno%>" readonly></td>
-                                        <td id = "style_id"><button type="submit" formaction="/acceptappointmentreq" class="btn btn-danger">Accept</button></td>
-                                        <td id = "style_id"><button type="submit" formaction="/rejectappointmentreq" class="btn btn-primary">Reject</button></td>
-                                        </form>
-                                    </tr>
-                                <% }) %>
-                            <%}%>
-                        </tbody>
-                    </table>
+            <section>
+                <div class="container">
+                    <div class="card" style="margin-top: 40px; margin-bottom: 40px;">
+                        <h5 class="card-header" style="background-color: powderblue;">PATIENT DETAILS</h5>
+                        <div class="card-body">
+                            <form action="/signupform" method="post"> 
+                                <div class="form-row" style="margin: 40px;">
+                                    <div class="col-md-4">
+                                        <label style="font-weight: 700;" for="validationDefault01">First name</label>
+                                        <input type="text" class="form-control" id="validationDefault01"  placeholder="<%=users[0].firstname%>" name="ifname" disabled>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="font-weight: 700;" for="validationDefault01">Middle name</label>
+                                        <input type="text" class="form-control" id="validationDefault01" placeholder="<%=users[0].middlename%>" name="imname" disabled>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="font-weight: 700;" for="validationDefault02">Last name</label>
+                                        <input type="text" class="form-control" id="validationDefault02" placeholder="<%=users[0].lastname%>" name="ilname" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin: 40px;">
+                                    <div class="col-md-6">
+                                        <label style="font-weight: 700;" for="validationDefault03">E-Mail</label>
+                                        <input type="text" class="form-control" id="validationDefault03" placeholder="<%=users[0].email%>" name="iemail" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label style="font-weight: 700;" for="validationDefault04">Mobile No.</label>
+                                        <input type="text" class="form-control" id="validationDefault04" placeholder="<%=users[0].mobno%>" name="imobno" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin: 40px;">
+                                    <div class="col-md-3">
+                                        <label style="font-weight: 700;" for="validationDefaultUsername">Age</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].age%>" aria-describedby="inputGroupPrepend2" name="iusername" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label style="font-weight: 700;" for="validationDefaultUsername">Gender</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].Gender%>" aria-describedby="inputGroupPrepend2" name="ipassword" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label style="font-weight: 700;" for="validationDefaultUsername">Height</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].Height%>" aria-describedby="inputGroupPrepend2" name="ipassword" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label style="font-weight: 700;" for="validationDefaultUsername">Weight</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].Weight%>" aria-describedby="inputGroupPrepend2" name="ipassword" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                            
+                        </div>
+                    </div>        
                 </div>
-            </div>
+            </section>
         </div>
       </div>
     </div>
