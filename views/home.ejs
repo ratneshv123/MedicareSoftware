@@ -32,9 +32,6 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/doctor">Doctors</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/about">about</a>
                 </li>
                 <li class="nav-item">
@@ -55,7 +52,7 @@
             <form class="modal-content animate" action="/signindoc" method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-                    <br><h1 style="text-align:center;font-weight: bolder;">LOGIN for DOCTORS</h1>
+                    <br><h1 style="text-align:center;font-weight: bolder;">LOGIN FOR DOCTORS</h1>
                 </div>
                 <div class="container">
                     <input type="text" placeholder="Enter Username" name="iusername" style="width: 90%;padding: 12px 20px;margin: 8px 26px;display: inline-block;border: 1px solid #ccc;box-sizing: border-box;font-size: 16px;">
@@ -73,7 +70,7 @@
             <form class="modal-content animate" action="/signin" method="POST">
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-                    <br><h1 style="text-align:center;font-weight: bolder;">LOGIN for PATIENTS</h1>
+                    <br><h1 style="text-align:center;font-weight: bolder;">LOGIN FOR PATIENTS</h1>
                 </div>
                 <div class="container">
                     <input type="text" placeholder="Enter Username" name="iusername" style="width: 90%;padding: 12px 20px;margin: 8px 26px;display: inline-block;border: 1px solid #ccc;box-sizing: border-box;font-size: 16px;">
@@ -108,7 +105,10 @@
                         <br><p><h6 style="margin-top:-30px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: .9rem;">Our organisation helps the basic need of the people, free consultancy to all of those who are in need.</h6></p>
                         <img src="../images/IMG-20191127-WA0110.jpg" style="width: 15%;margin-top: 30px; border-radius: 500px;">
                         <span><img src="../images/IMG-20191018-WA0025.jpg" style="width: 15%;margin-top: 30px; margin-left: 30px; border-radius: 500px;"></span>
-                        <br><br><button type="button" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">CONSULT US</button>
+                        <br><br>
+                        <form method="GET" action="/consultus">
+                            <button type="submit" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">CONSULT US</button>
+                        </form>
                     </div>    
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
@@ -122,7 +122,10 @@
                         <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> No paper work required at our side.</h6></p>
                         <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> Customer satisfaction 24*7 available.</h6></p>
                         <p><h6 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: .9rem;"><span style="color: red; font-weight: bolder;">&#10003 </span> Found your nearby hospotals and their doctors in one go.</h6></p>
-                        <br><br><button type="button" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">CONSULT US</button>
+                        <br><br>
+                        <form method="GET" action="/consultus">
+                            <button type="submit" class="btn btn-warning" style="border-radius: 0px; font-size: .8rem; font-weight: bold; color: white; height: 50px; width: 250px;letter-spacing: 1.6px;">CONSULT US</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -181,7 +184,7 @@
                     <button type="submit" class="btn btn-light" style="width: 200px; height: 100px;font-weight: bolder;font-size: 1.6rem; margin-top: 20px;">Admin Office</button>
                 </form>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <ul class="address">
                     <span>Doctors</span>       
                     <li>
@@ -198,20 +201,20 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <ul class="address">
                     <span>services</span>       
                     <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Services 1</a>
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Free consultancy Services</a>
                     </li>
                     <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Services 2</a>
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Direct Appoinment with the Doctors</a>
                     </li>
                     <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Services 3</a>
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Appoinment confirmation through mail.</a>
                     </li>
                     <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Services 4</a>
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Best Quality Doctors</a>
                     </li>
                 </ul>
             </div>
@@ -268,7 +271,7 @@
 
 
     .address span , .menu span{
-        margin-top: 50px;
+        margin-top: 20px;
         color: #FFF; 
         font-weight: bold; 
         border-bottom: 2px solid #c7c7c7; 

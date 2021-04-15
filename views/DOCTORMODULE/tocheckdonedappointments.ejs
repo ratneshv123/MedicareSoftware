@@ -9,9 +9,8 @@
     <!-- <link rel="stylesheet" href="signin.css">
     <link rel="stylesheet" href="usersignincss.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="/stylesheet/style.css">
      
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -37,10 +36,10 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/doctor">Doctors</a>
                     </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" >Dr.<%= message %></a>
+                    <li class="nav-item oneandonly">
+                        <a class="nav-link" style="margin-top: 8px;">Dr.<%= message %></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item oneandonly">
                         <button class=" btn btn-danger"><a class="nav-link" href="/">Sign Out</a></button>
                     </li>
                 </ul>
@@ -50,19 +49,7 @@
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 <!-- sidebar -->
-<div class="sidebar-container">
-    <div class="sidebar-logo">
-      <!-- Example single danger button -->
-      <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="material-icons" style="vertical-align: bottom;">
-            add
-          </span>Availability
-        </button>
-        
-      </div>
-    </div>
-    
+<div class="sidebar-container"  style="position: absolute;">
     <form method="POST" action="/confirmedappointments">
         <a  class="sidebar-links" >
             <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
@@ -83,6 +70,7 @@
           </div>
         </a>
     </form>
+
 
     <form method="POST" action="/allpreviousrecords">
         <a href="#" class="sidebar-links">
@@ -112,7 +100,44 @@
     <div class="row">
       <div class="col-md">
         <div class="info-box">
-            
+            <div class="card" style=" margin-bottom: 10px;">
+                <h5 class="card-header" style="background-color: powderblue; text-align: center;">PATIENTS APPOINTMENT DETAILS</h5>
+                <div class="card-body">
+                    <table class="table table-dark" style="background-color: powderblue;">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">PATIENT NAME</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">TIME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">MOBILE NO</th>
+                            <th scope="col">VIEW</th>
+                            <th scope="col">DONE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(typeof users !=='undefined') { %>
+                                <% users.forEach((user)=> { %>
+                                    <tr>
+                                        <form method="post">
+                                        <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" name="id" value="<%=user.idappointment%>" readonly></td>
+                                        <td id = "style_id"><input type="text" name="name" value="<%= user.patientname%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 100px;text-align: center;" name="date" value="<%= user.appointmentdate%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 120px;text-align: center;" name="time" value="<%= user.appointmenttime%>" readonly></td>
+                                        <td id = "style_id"><input type="text" name="email" value="<%= user.appointmentemail%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 130px;text-align: center;" name="mobno" value="<%= user.appointmentmobno%>" readonly></td>
+                                        <td id = "style_id"><button type="submit" formaction="/viewdoctorpatientdetails" class="btn btn-danger">View</button></td>
+                                        <td id = "style_id"><button type="submit" formaction="/appointmentcompleted" class="btn btn-danger">Done</button></td>
+                                          
+                                    </form>
+                                    </tr>
+                                <% }) %>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
       </div>
     </div>

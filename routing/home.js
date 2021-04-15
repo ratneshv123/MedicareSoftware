@@ -8,11 +8,7 @@ router.get('/', (req,res)=>{
 });
 
 router.get('/about', (req,res)=>{
-    res.render('about');
-})
-
-router.get('/doctor', (req, res) => {
-    res.render('doctorsdetail'); 
+    res.render('./MISC/about');
 });
 
 module.exports = router;
