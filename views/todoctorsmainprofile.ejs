@@ -9,7 +9,7 @@
     <!-- <link rel="stylesheet" href="signin.css">
     <link rel="stylesheet" href="usersignincss.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/stylesheet/style.css">
      
@@ -33,35 +33,18 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="nav justify-content-end">
-                   
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/doctor">Doctors</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" >Dr.<%= message %></a>
+                    <li class="nav-item oneandonly">
+                        <a class="nav-link" style="margin-top: 8px;">Dr.<%= message %></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item oneandonly">
                         <button class=" btn btn-danger"><a class="nav-link" href="/">Sign Out</a></button>
                     </li>
                 </ul>
             </div>
         </nav>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
+        
 <!-- sidebar -->
-<div class="sidebar-container">
-    <div class="sidebar-logo">
-      <!-- Example single danger button -->
-      <div class="btn-group">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="material-icons" style="vertical-align: bottom;">
-            add
-          </span>Availability
-        </button>
-      </div>
-    </div>
-    
+<div class="sidebar-container" style="position: absolute;">
     <form method="POST" action="/confirmedappointments">
         <a  class="sidebar-links" >
             <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
@@ -83,7 +66,7 @@
         </a>
     </form>
 
-
+    
     <form method="POST" action="/allpreviousrecords">
         <a href="#" class="sidebar-links">
             <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
@@ -113,60 +96,58 @@
       <div class="col-md">
         <div class="info-box">
             <section>
-                <div class="container">
-                    <div class="card" style=" margin-bottom: 40px;">
-                        <h5 class="card-header" style="background-color: powderblue;">YOUR DETAILS</h5>
-                        <div class="card-body">
-                            <form  method="post"> 
-                                <div class="form-row" style="margin: 40px;">
-                                    <div class="col-md-2">
-                                        <label style="font-weight: 700;" for="validationDefault01">YOUR ID</label>
-                                        <input type="text" class="form-control" id="validationDefault01"  placeholder="<%=users[0].doctorsid %>" disabled >
-                                        <input type="text" class="form-control" id="validationDefault01" value="<%=users[0].doctorsid %>" name="id" placeholder="<%=users[0].doctorsid %>" hidden>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label style="font-weight: 700;" for="validationDefault01">NAME</label>
-                                        <input type="text" class="form-control" id="validationDefault01" placeholder="<%=users[0].doctorsname %>" name="name" >
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label style="font-weight: 700;" for="validationDefault02">ADDRESS</label>
-                                        <input type="text" class="form-control" id="validationDefault02" placeholder="<%=users[0].doctorsaddress %>" name="address">
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin: 40px;">
-                                    <div class="col-md-6">
-                                        <label style="font-weight: 700;" for="validationDefault03">E-Mail</label>
-                                        <input type="text" class="form-control" id="validationDefault03" name="email" placeholder="<%=users[0].doctorsemail %>" >
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label style="font-weight: 700;" for="validationDefault04">MOBILE NO</label>
-                                        <input type="text" class="form-control" id="validationDefault04" placeholder="<%=users[0].doctorscontact %>" name="contact">
-                                    </div>
-                                </div>
-                                <div class="form-row" style="margin: 40px;">
-                                    <div class="col-md-5">
-                                        <label style="font-weight: 700;" for="validationDefaultUsername">PRESENT SPECIALITY</label>
-                        
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsspeciality %>" aria-describedby="inputGroupPrepend2" name="speciality" disabled>
-                                        </div>
-                                        <label style="font-weight: 700;" for="validationDefaultUsername">SELECT TO CHANGE SPECIALITY</label>
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality" placeholder="<%=users[0].doctorsspeciality %>" required>
-                                            <%- include ('./list') %>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label style="font-weight: 700;" for="validationDefaultUsername">FEES</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsfees %>" aria-describedby="inputGroupPrepend2" name="fees" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-danger" formaction="/updatethedoctordetails">CLICK HERE TO CHANGE DETAILS</button> 
-                            </form>
-                        </div>
-                    </div>        
-                </div>
+              <div class="card" style=" margin-bottom: 40px;">
+                  <h5 class="card-header" style="background-color: powderblue;">YOUR DETAILS</h5>
+                  <div class="card-body">
+                      <form  method="post"> 
+                          <div class="form-row" style="margin: 40px;">
+                              <div class="col-md-2">
+                                  <label style="font-weight: 700;" for="validationDefault01">YOUR ID</label>
+                                  <input type="text" class="form-control" id="validationDefault01"  placeholder="<%=users[0].doctorsid %>" disabled >
+                                  <input type="text" class="form-control" id="validationDefault01" value="<%=users[0].doctorsid %>" name="id" placeholder="<%=users[0].doctorsid %>" hidden>
+                              </div>
+                              <div class="col-md-4">
+                                  <label style="font-weight: 700;" for="validationDefault01">NAME</label>
+                                  <input type="text" class="form-control" id="validationDefault01" placeholder="<%=users[0].doctorsname %>" name="name" >
+                              </div>
+                              <div class="col-md-6">
+                                  <label style="font-weight: 700;" for="validationDefault02">ADDRESS</label>
+                                  <input type="text" class="form-control" id="validationDefault02" placeholder="<%=users[0].doctorsaddress %>" name="address">
+                              </div>
+                          </div>
+                          <div class="form-row" style="margin: 40px;">
+                              <div class="col-md-6">
+                                  <label style="font-weight: 700;" for="validationDefault03">E-Mail</label>
+                                  <input type="text" class="form-control" id="validationDefault03" name="email" placeholder="<%=users[0].doctorsemail %>" >
+                              </div>
+                              <div class="col-md-6">
+                                  <label style="font-weight: 700;" for="validationDefault04">MOBILE NO</label>
+                                  <input type="text" class="form-control" id="validationDefault04" placeholder="<%=users[0].doctorscontact %>" name="contact">
+                              </div>
+                          </div>
+                          <div class="form-row" style="margin: 40px;">
+                              <div class="col-md-5">
+                                  <label style="font-weight: 700;" for="validationDefaultUsername">PRESENT SPECIALITY</label>
+                  
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsspeciality %>" aria-describedby="inputGroupPrepend2" name="speciality" disabled>
+                                  </div>
+                                  <label style="font-weight: 700;" for="validationDefaultUsername">SELECT TO CHANGE SPECIALITY</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality" placeholder="<%=users[0].doctorsspeciality %>" required>
+                                      <%- include ('./list') %>
+                                  </select>
+                              </div>
+                              <div class="col-md-2">
+                                  <label style="font-weight: 700;" for="validationDefaultUsername">FEES</label>
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsfees %>" aria-describedby="inputGroupPrepend2" name="fees" >
+                                  </div>
+                              </div>
+                          </div>
+                          <button type="submit" class="btn btn-danger" formaction="/updatethedoctordetails">CLICK HERE TO CHANGE DETAILS</button> 
+                      </form>
+                  </div>
+              </div>        
             </section>
         </div>
       </div>

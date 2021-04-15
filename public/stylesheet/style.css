@@ -324,20 +324,10 @@ form-control{
 }
 
 .info-box {
-    background-color:lightskyblue;
-    height: 500px;
+    height: 100%;
     margin-left: 80px;
-    margin-bottom: 20px;
-    width: 1165px;
+    width: 1148px;
 }
-
-.info-boxbooks {
-    background-color:lightskyblue;
-    margin-left: 80px;
-    margin-bottom: 20px;
-    width: 1150px;
-}
-
 
 /* footer */
  .container-fluid {
@@ -386,4 +376,8 @@ form-control{
 
 .letresizebutton{
     width: 120px;
+}
+
+.oneandonly{
+    margin-right: 15px;
 }
