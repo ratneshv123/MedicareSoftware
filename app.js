@@ -12,6 +12,7 @@ const inpatients = require('./routing/patients/inpatients');
 const makeappoinment = require('./routing/patients/appoinment/makeappoinment');
 const signupdoc = require('./routing/signup/signupdoc');
 const request = require('./routing/request');
+const consultus = require('./routing/consultus');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,5 +32,6 @@ app.use(adminsymptoms);
 app.use(makeappoinment);
 app.use(signupdoc);
 app.use(request);
+app.use(consultus);
 
 app.listen(3000, ()=>console.log("Listening on port 3000"));

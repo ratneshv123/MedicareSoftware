@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="/stylesheet/style.css">
      
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -33,6 +32,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="nav justify-content-end">
+                   
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/doctor">Doctors</a>
+                    </li> -->
                     <li class="nav-item oneandonly">
                         <a class="nav-link" style="margin-top: 8px;">Dr.<%= message %></a>
                     </li>
@@ -42,9 +45,11 @@
                 </ul>
             </div>
         </nav>
-        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <!-- sidebar -->
-<div class="sidebar-container" style="position: absolute;">
+<div class="sidebar-container"  style="position: absolute;">
     <form method="POST" action="/confirmedappointments">
         <a  class="sidebar-links" >
             <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
@@ -66,7 +71,7 @@
         </a>
     </form>
 
-    
+
     <form method="POST" action="/allpreviousrecords">
         <a href="#" class="sidebar-links">
             <input type="text" class="form-control" id="validationDefault03" value="<%= message %>" name="username" hidden>
@@ -95,60 +100,43 @@
     <div class="row">
       <div class="col-md">
         <div class="info-box">
-            <section>
-              <div class="card" style=" margin-bottom: 40px;">
-                  <h5 class="card-header" style="background-color: powderblue;">YOUR DETAILS</h5>
-                  <div class="card-body">
-                      <form  method="post"> 
-                          <div class="form-row" style="margin: 40px;">
-                              <div class="col-md-2">
-                                  <label style="font-weight: 700;" for="validationDefault01">YOUR ID</label>
-                                  <input type="text" class="form-control" id="validationDefault01"  placeholder="<%=users[0].doctorsid %>" disabled >
-                                  <input type="text" class="form-control" id="validationDefault01" value="<%=users[0].doctorsid %>" name="id" placeholder="<%=users[0].doctorsid %>" hidden>
-                              </div>
-                              <div class="col-md-4">
-                                  <label style="font-weight: 700;" for="validationDefault01">NAME</label>
-                                  <input type="text" class="form-control" id="validationDefault01" placeholder="<%=users[0].doctorsname %>" name="name" >
-                              </div>
-                              <div class="col-md-6">
-                                  <label style="font-weight: 700;" for="validationDefault02">ADDRESS</label>
-                                  <input type="text" class="form-control" id="validationDefault02" placeholder="<%=users[0].doctorsaddress %>" name="address">
-                              </div>
-                          </div>
-                          <div class="form-row" style="margin: 40px;">
-                              <div class="col-md-6">
-                                  <label style="font-weight: 700;" for="validationDefault03">E-Mail</label>
-                                  <input type="text" class="form-control" id="validationDefault03" name="email" placeholder="<%=users[0].doctorsemail %>" >
-                              </div>
-                              <div class="col-md-6">
-                                  <label style="font-weight: 700;" for="validationDefault04">MOBILE NO</label>
-                                  <input type="text" class="form-control" id="validationDefault04" placeholder="<%=users[0].doctorscontact %>" name="contact">
-                              </div>
-                          </div>
-                          <div class="form-row" style="margin: 40px;">
-                              <div class="col-md-5">
-                                  <label style="font-weight: 700;" for="validationDefaultUsername">PRESENT SPECIALITY</label>
-                  
-                                  <div class="input-group">
-                                      <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsspeciality %>" aria-describedby="inputGroupPrepend2" name="speciality" disabled>
-                                  </div>
-                                  <label style="font-weight: 700;" for="validationDefaultUsername">SELECT TO CHANGE SPECIALITY</label>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="speciality" placeholder="<%=users[0].doctorsspeciality %>" required>
-                                      <%- include ('./list') %>
-                                  </select>
-                              </div>
-                              <div class="col-md-2">
-                                  <label style="font-weight: 700;" for="validationDefaultUsername">FEES</label>
-                                  <div class="input-group">
-                                      <input type="text" class="form-control" id="validationDefaultUsername" placeholder="<%=users[0].doctorsfees %>" aria-describedby="inputGroupPrepend2" name="fees" >
-                                  </div>
-                              </div>
-                          </div>
-                          <button type="submit" class="btn btn-danger" formaction="/updatethedoctordetails">CLICK HERE TO CHANGE DETAILS</button> 
-                      </form>
-                  </div>
-              </div>        
-            </section>
+            <div class="card" style="margin-bottom: 10px;">
+                <h5 class="card-header" style="background-color: powderblue; text-align: center;">PATIENTS APPOINTMENT REQUESTS</h5>
+                <div class="card-body">
+                    <table class="table table-dark" style="background-color: powderblue;">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">PATIENT NAME</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">TIME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">MOBILE NO</th>
+                            <th scope="col">ACCEPT</th>
+                            <th scope="col">REJECT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(typeof users !=='undefined') { %>
+                                <% users.forEach((user)=> { %>
+                                    <tr>
+                                        <form method="post">
+                                        <td id = "style_id"><input type="text"  style="width: 25px;text-align: center;" name="id" value="<%=user.idappointment%>" readonly></td>
+                                        <td id = "style_id"><input type="text" name="name" value="<%= user.patientname%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 100px;text-align: center;" name="date" value="<%= user.appointmentdate%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 120px;text-align: center;" name="time" value="<%= user.appointmenttime%>" readonly></td>
+                                        <td id = "style_id"><input type="text" name="email" value="<%= user.appointmentemail%>" readonly></td>
+                                        <td id = "style_id"><input type="text" style="width: 130px;text-align: center;" name="mobno" value="<%= user.appointmentmobno%>" readonly></td>
+                                        <td id = "style_id"><button type="submit" formaction="/acceptappointmentreq" class="btn btn-danger">Accept</button></td>
+                                        <td id = "style_id"><button type="submit" formaction="/rejectappointmentreq" class="btn btn-primary">Reject</button></td>
+                                        </form>
+                                    </tr>
+                                <% }) %>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
       </div>
     </div>
