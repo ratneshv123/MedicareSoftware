@@ -83,8 +83,15 @@ router.post('/doctordetails', async(req,res)=>{
             resolve(result);
         });
     });
+    const medicine = await new Promise((resolve, reject) => {
+        const query = `select medicinename from medicine where symtomtype = ?`;
+        connection.query(query, req.body.isymptoms,(err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
     console.log(doctordetail);
-    res.render('./MISC/consultus',{value4: allsymptoms,value1:user,value2:alldoctors,cards:1,value3:doctordetail});
+    res.render('./MISC/consultus',{value4: allsymptoms,value1:user,value2:alldoctors,cards:1,value3:doctordetail,value5:medicine});
 });
 
 
