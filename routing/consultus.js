@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/consultus', async(req,res)=>{
     var message = "";
     const allsymptoms = await new Promise((resolve, reject) => {
-        const query = `select symptomsname from symptoms`;
+        const query = `select symptomsname from symptoms`; 
         connection.query(query, (err, result) => {
             if (err) reject(new Error('Something Went Wrong+:' + err));
             resolve(result);
