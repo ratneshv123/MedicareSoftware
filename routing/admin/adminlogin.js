@@ -35,20 +35,16 @@ router.post('/welcomeadmin', async (req, res) => {
             }
             else
             {
-                bcrypt.compare(user.password,result[0].password, (err, result) => {
-                    if (result === true) {
-                        console.log('success');
-                        res.render('./ADMIN/inadmin', {user: user});  
-                    } 
-                    else
-                    {
-                        console.log('failure');
-                        message = "Invalid username or password";
-                        res.render('./ADMIN/adminlogin', {message:message});
-
-                        reject(new Error('Something failed (Record Insertion) :' + err));
-                    }
-                });
+                if (user.password === result[0].password) {
+                    console.log('success');
+                    res.render('./ADMIN/inadmin', {user: user});  
+                } 
+                else
+                {
+                    console.log('failure');
+                    message = "Invalid username or password";
+                    res.render('./ADMIN/adminlogin', {message:message});
+                }
             }
             resolve(result);
         });

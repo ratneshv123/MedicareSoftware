@@ -50,7 +50,8 @@ router.post('/doctordetails', async(req,res)=>{
         consultancyname: req.body.ifname,
         consultancyemail: req.body.iemail,
         consultancymobno: req.body.imobno,
-        consultancysymtoms: req.body.isymptoms
+        consultancysymtoms: req.body.isymptoms,
+        consultancydoctors: req.body.idoctorname
     };
     const allsymptoms = await new Promise((resolve, reject) => {
         const query = `select symptomsname from symptoms`;
@@ -62,6 +63,13 @@ router.post('/doctordetails', async(req,res)=>{
     const alldoctors = await new Promise((resolve, reject) => {
         const query = `select doctorsname from doctors where doctorsspeciality in (select symptomscategory from symptoms where symptomsname = ?);`;
         connection.query(query,user.consultancysymtoms, (err, result) => {
+            if (err) reject(new Error('Something Went Wrong+:' + err));
+            resolve(result);
+        });
+    });
+    await new Promise((resolve, reject) => {
+        const query = `INSERT into consultancy SET ?`;
+        connection.query(query,user, (err, result) => {
             if (err) reject(new Error('Something Went Wrong+:' + err));
             resolve(result);
         });

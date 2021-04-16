@@ -143,30 +143,27 @@
     <section>
         <div class="row">
             <div class="col-md-3" style="height: 200px; background-color:#263b51;">
-                <p style="margin-top: 55px;margin-left: 70px; font-weight: bolder; color: white;font-size: 2rem;">MAKE AN <br> APPOINMENT</p>
+                <p style="margin-top: 55px;margin-left: 70px; font-weight: bolder; color: white;font-size: 2rem;">CONSULT <br> US</p>
             </div>
             <div class="col-md-9" style="background-color: #008fd5;">
-                <form> 
+                <form method="POST" action="/checksymptomdoc"> 
                     <div class="form-row" style="margin: 40px;">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Full Name" required>
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Full Name" name="ifname" required>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="Email" required>
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="Email" name="iemail" required>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="validationDefault02" placeholder="Mob No" required>
+                            <input type="text" class="form-control" id="validationDefault02" placeholder="Mob No" name="imobno" required>
                         </div>
                     </div>
                     <div class="form-row" style="margin: 40px;">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="validationDefault03" placeholder="Appoinment date" required>
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="Symptoms" name="isymptoms" required>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" id="validationDefault04" placeholder="Doctors" required>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-primary" type="submit" style="width: 300px;background-color: white;color: #263b51;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">MAKE AN APPOINMENT</button>
+                            <button class="btn btn-primary" type="submit" style="width: 300px;background-color: white;color: #263b51;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">CLICK HERE TO CONSULT US</button>
                         </div>
                     </div>
                 </form>
@@ -184,24 +181,7 @@
                     <button type="submit" class="btn btn-light" style="width: 200px; height: 100px;font-weight: bolder;font-size: 1.6rem; margin-top: 20px;">Admin Office</button>
                 </form>
             </div>
-            <div class="col-md-2">
-                <ul class="address">
-                    <span>Doctors</span>       
-                    <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Doctor 1 name</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Doctor 2 name</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Doctor 3 name</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Doctor 4 name</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <ul class="address">
                     <span>services</span>       
                     <li>
@@ -215,6 +195,9 @@
                     </li>
                     <li>
                         <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Best Quality Doctors</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i> <a href="#">Automatic record generation and updation</a>
                     </li>
                 </ul>
             </div>

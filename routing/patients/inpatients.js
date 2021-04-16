@@ -5,6 +5,7 @@ const router = express.Router();
 var session = '';
 
 router.get('/welcomeuser', async(req,res)=>{
+    console.log(req.query.valid);
     var passedvalue = req.query.valid;
     if(session.length==0)
         session = passedvalue;
@@ -36,7 +37,6 @@ router.get('/welcomeuser', async(req,res)=>{
             resolve(result);
         });
     });
-    session = alluser4[0].username;
     console.log(session);
     console.log(alluser1,alluser2,alluser3,alluser4);
     res.render('./PATIENT/welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3,value4: alluser4});
