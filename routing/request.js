@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.get('/viewrequest', async(req, res) => {
     const alluser=await new Promise((resolve, reject)=> {
-        //console.log(this);
         const id = 0;
         const query = `SELECT * FROM signindoc where registered=?`;
         connection.query(query,id, (err, result)=> {
@@ -18,7 +17,6 @@ router.get('/viewrequest', async(req, res) => {
 router.post('/rejectdoctor', async (req, res) => {
     console.log(req.body);
     await new Promise((resolve, reject)=> {
-        //console.log(this);
         const query = `DELETE FROM signindoc WHERE idsignindoc=?`;
         connection.query(query,req.body.doctorid, (err, result)=> {
             if (err)    reject(new Error('Something failed (Record Deletion) :'+err));

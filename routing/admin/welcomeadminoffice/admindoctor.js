@@ -1,4 +1,3 @@
-const { render } = require('ejs');
 const express = require('express');
 const connection = require('../../../db/db');
 const router = express.Router();
