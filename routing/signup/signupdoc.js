@@ -2,15 +2,13 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
 const connection = require('../../db/db');
-const { route } = require('../admin/welcomeadminoffice/admindoctor');
+const {createToken} = require('../../models/user');
 const router = express.Router();
 
 router.get('/signupdoc', (req,res)=>{
     var message = "";
     res.render('signupdoc',{message:message});
 });
-
-
 
 router.post('/signupdocform', async(req, res) => {
     console.log(req.body);       
@@ -64,6 +62,14 @@ router.post('/signindoc', async (req, res) => {
         password: req.body.ipassword
     };
 
+    const uservalue = await new Promise((resolve,reject)=>{
+        const query = `Select * from signindoc where username = ?`;
+        connection.query(query,user.name,(err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Updation) :'+err));
+            resolve (result);
+        });
+    });
+
     await new Promise((resolve, reject) => {
         const query = `SELECT doctorspassword FROM doctors WHERE doctorsusername=?`;
         connection.query(query,user.name, (err, result) => {
@@ -83,6 +89,8 @@ router.post('/signindoc', async (req, res) => {
                 bcrypt.compare(user.password,result[0].doctorspassword, (err, result) => {
                     if (result === true) {
                         console.log('success');
+                        const token = createToken(uservalue[0].idsignindoc);
+                        res.cookie('jwt',token,{httpOnly:true,maxAge: 1000*2*24*60*60});
                         res.render('./DOCTORMODULE/doctorspage.ejs',{message:alluser[0].doctorsname});
                     } 
                     else

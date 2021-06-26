@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const connection = require('../../db/db');
+const {createToken} = require('../../models/user');
 const router = express.Router();
 
 router.get('/signup', (req,res)=>{
@@ -53,6 +54,14 @@ router.post('/signin', async (req, res) => {
         password: req.body.ipassword
     };
 
+    const uservalue = await new Promise((resolve,reject)=>{
+        const query = `Select * from signin where username = ?`;
+        connection.query(query,user.name,(err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Updation) :'+err));
+            resolve (result);
+        });
+    });
+
     await new Promise((resolve, reject) => {
         const query = `SELECT password FROM signin WHERE username=?`;
         connection.query(query,user.name, (err, result) => {
@@ -73,6 +82,9 @@ router.post('/signin', async (req, res) => {
                     if (result === true) {
                         console.log('success');
                         var string = encodeURIComponent(req.body.iusername);
+                        const token = createToken(uservalue[0].idsignin);
+                        console.log(token);
+                        res.cookie('jwt',token,{httpOnly:true,maxAge: 1000*2*24*60*60});
                         res.redirect('/welcomeuser?valid=' + string);
                     } 
                     else
@@ -87,6 +99,11 @@ router.post('/signin', async (req, res) => {
             resolve(result);
         });
     });
+});
+
+router.get('/signout', (req,res) => {
+    res.cookie('jwt', '', {maxAge:1});
+    res.redirect('/');
 });
 
 module.exports = router;

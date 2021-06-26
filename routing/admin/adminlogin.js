@@ -1,6 +1,7 @@
 const express = require('express');
 const connection = require('../../db/db');
 const bcrypt = require('bcryptjs');
+const {createToken} = require('../../models/user');
 const router = express.Router();
 
 router.post('/adminoffice', (req, res) => {
@@ -21,6 +22,14 @@ router.post('/welcomeadmin', async (req, res) => {
         password: req.body.ipassword
     };
 
+    const uservalue = await new Promise((resolve,reject)=>{
+        const query = `Select * from signinadmin where username = ?`;
+        connection.query(query,user.name,(err, result)=> {
+            if (err)    reject(new Error('Something failed (Record Updation) :'+err));
+            resolve (result);
+        });
+    });
+
     await new Promise((resolve, reject) => {
         const query = `SELECT password FROM signinadmin WHERE username=?`;
         connection.query(query,user.name, (err, result) => {
@@ -37,6 +46,9 @@ router.post('/welcomeadmin', async (req, res) => {
             {
                 if (user.password === result[0].password) {
                     console.log('success');
+                    const token = createToken(uservalue[0].signinadminid);
+                    console.log(token);
+                    res.cookie('jwt',token,{httpOnly:true,maxAge: 1000*2*24*60*60});
                     res.render('./ADMIN/inadmin', {user: user});  
                 } 
                 else
