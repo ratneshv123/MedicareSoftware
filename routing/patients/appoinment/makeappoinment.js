@@ -1,9 +1,9 @@
 const express = require('express');
-const con = require('../../../db/db');
 const connection = require('../../../db/db');
+const {requireAuth} = require('../../../middleware/authmiddleware');
 const router = express.Router();
 
-router.get('/makeanappoinment', async (req, res) => {
+router.get('/makeanappoinment', requireAuth, async (req, res) => {
     var message = "";
     const alldoctor=await new Promise((resolve, reject) => {
         const query = `select doctorsname from doctors`;
@@ -30,7 +30,7 @@ router.get('/makeanappoinment', async (req, res) => {
 
 
 
-router.post('/checkavail', async (req, res) => {
+router.post('/checkavail', requireAuth, async (req, res) => {
     console.log(req.body);
     const user = {
         patientname: req.body.ifullname,
@@ -72,7 +72,7 @@ router.post('/checkavail', async (req, res) => {
     res.render('./PATIENT/makeanappoint',{value4: alldates,value:user,dates:date,users:alldoctor});
 });
 
-router.post('/bookappoin', async(req, res) => {
+router.post('/bookappoin', requireAuth, async(req, res) => {
     console.log(req.body);
     var message = "";
     const user = {

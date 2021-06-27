@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 var nodemailer = require('nodemailer');
 const connection = require('../../db/db');
 const {createToken} = require('../../models/user');
+const {requireAuth} = require('../../middleware/authmiddleware');
 const router = express.Router();
 
 router.get('/signupdoc', (req,res)=>{
@@ -110,7 +111,7 @@ router.post('/signindoc', async (req, res) => {
 
 // all appointment request
 
-router.post('/allappointmentrequest', async(req, res) => {
+router.post('/allappointmentrequest', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         name: req.body.username,
@@ -131,7 +132,7 @@ router.post('/allappointmentrequest', async(req, res) => {
 
 // accept appointment request
 
-router.post('/acceptappointmentreq',async(req, res) => {
+router.post('/acceptappointmentreq', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         accepted: 1,
@@ -209,7 +210,7 @@ router.post('/acceptappointmentreq',async(req, res) => {
 
 //reject appointment request
 
-router.post('/rejectappointmentreq', async(req, res) => {
+router.post('/rejectappointmentreq', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         id:req.body.id
@@ -250,7 +251,7 @@ router.post('/rejectappointmentreq', async(req, res) => {
 
 //all confirmed appointments
 
-router.post('/confirmedappointments', async(req, res) => {
+router.post('/confirmedappointments', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         name: req.body.username,
@@ -271,7 +272,7 @@ router.post('/confirmedappointments', async(req, res) => {
 
 // alldoned appointments
 
-router.post('/appointmentcompleted',async(req, res) => {
+router.post('/appointmentcompleted', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         accepted: 2,
@@ -312,7 +313,7 @@ router.post('/appointmentcompleted',async(req, res) => {
 });
 
 
-router.post('/allpreviousrecords', async(req, res) => {
+router.post('/allpreviousrecords', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         name: req.body.username,
@@ -330,7 +331,7 @@ router.post('/allpreviousrecords', async(req, res) => {
     res.render('./DOCTORMODULE/tocheckpreviousrecords',{users:alluser,message:req.body.username});
 });
 
-router.post('/deltingpatientrecords', async(req, res) => {
+router.post('/deltingpatientrecords', requireAuth, async(req, res) => {
     console.log(req.body);
 
     const alluser=await new Promise((resolve, reject) => {
@@ -367,7 +368,7 @@ router.post('/deltingpatientrecords', async(req, res) => {
 
 // viewing all details of patient appointment
 
-router.post('/viewdoctorpatientdetails',async(req, res) => {
+router.post('/viewdoctorpatientdetails', requireAuth, async(req, res) => {
     console.log(req.body);
     const alluser=await new Promise((resolve, reject) => {
         const query = `select doctorname from appointment where idappointment=?`;
@@ -388,7 +389,7 @@ router.post('/viewdoctorpatientdetails',async(req, res) => {
     res.render('./DOCTORMODULE/tocheckapppatientdetails',{users:alluser1,message:alluser[0].doctorname});
 });
 
-router.post('/doctorsmainprofile',async(req, res) => {
+router.post('/doctorsmainprofile', requireAuth, async(req, res) => {
     console.log(req.body);
     const alluser=await new Promise((resolve, reject) => {
         const query = `select * from doctors where doctorsname=?`;
@@ -401,7 +402,7 @@ router.post('/doctorsmainprofile',async(req, res) => {
     res.render('./DOCTORMODULE/todoctorsmainprofile',{users:alluser,message:req.body.username});
 });
 
-router.post('/updatethedoctordetails', async(req, res) => {
+router.post('/updatethedoctordetails', requireAuth, async(req, res) => {
     console.log(req.body);
     const alluser=await new Promise((resolve, reject) => {
         const query = `select doctorsname from doctors where doctorsid=?`;

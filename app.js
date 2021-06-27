@@ -14,10 +14,12 @@ const makeappoinment = require('./routing/patients/appoinment/makeappoinment');
 const signupdoc = require('./routing/signup/signupdoc');
 const request = require('./routing/request');
 const consultus = require('./routing/consultus');
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
+app.use(cookieParser());
 
 app.set('view engine','ejs');
 

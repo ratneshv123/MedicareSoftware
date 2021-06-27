@@ -1,11 +1,11 @@
 const express = require('express');
-const con = require('../../../db/db');
 const connection = require('../../../db/db');
+const {requireAuth} = require('../../../middleware/authmiddleware');
 const router = express.Router();
 
 //routes for updation/addition of medicines
 
-router.post('/addthemedicine',async(req, res) => {
+router.post('/addthemedicine',requireAuth,async(req, res) => {
 
     console.log(req.body);
     const user = {
@@ -32,7 +32,7 @@ router.post('/addthemedicine',async(req, res) => {
    res.render('./MEDICINE/addmed',{message:message,users: alluser});
 });
 
-router.post('/viewingmedicine', async (req, res) => {
+router.post('/viewingmedicine',requireAuth, async (req, res) => {
     const user = {
         sortby: req.body.iprefname
     };
@@ -58,7 +58,7 @@ router.post('/viewingmedicine', async (req, res) => {
     res.render('./MEDICINE/viewmed',{users:alluser,mesa:meg});
 });
 
-router.post('/viewmedicinebyname', async (req, res) => {
+router.post('/viewmedicinebyname',requireAuth, async (req, res) => {
     const user = {
         name: req.body.iname,
         value:req.body.ivalue
@@ -89,7 +89,7 @@ router.post('/viewmedicinebyname', async (req, res) => {
 
 // updating the medicines
 
-router.post('/updatingmedicine', async (req, res) => {
+router.post('/updatingmedicine',requireAuth, async (req, res) => {
     const user = {
         name: req.body.iname,
         value:req.body.iprefname
@@ -120,7 +120,7 @@ router.post('/updatingmedicine', async (req, res) => {
 });
 
 //route for deleting the medicine 
-router.post('/deletethemedicine', async(req, res) => {
+router.post('/deletethemedicine', requireAuth,async(req, res) => {
     console.log(req.body);
     const user = {
         id:req.body.medicineid
@@ -148,7 +148,7 @@ router.post('/deletethemedicine', async(req, res) => {
 
 //finalupdatemedicine
 
-router.post('/updatethemedicine', async(req, res) => {
+router.post('/updatethemedicine', requireAuth,async(req, res) => {
     console.log(req.body);
     const user = {
         id: req.body.medicineid,
@@ -168,7 +168,7 @@ router.post('/updatethemedicine', async(req, res) => {
 
 //router for doctorupdatethe details 
 
-router.post('/finalupdatemedicine',async(req, res) => {
+router.post('/finalupdatemedicine',requireAuth,async(req, res) => {
     console.log(req.body);
     const user = {
         id: req.body.id,

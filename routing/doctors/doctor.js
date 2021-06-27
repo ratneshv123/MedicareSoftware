@@ -2,7 +2,6 @@ const express = require('express');
 const connection = require('../../db/db');
 const router = express.Router();
 
-
 router.post('/viewingdoctors', async (req, res) => {
     const user = {
         sortby: req.body.iprefname,

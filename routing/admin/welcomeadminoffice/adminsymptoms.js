@@ -1,13 +1,13 @@
-const { render } = require('ejs');
 const express = require('express');
 const connection = require('../../../db/db');
+const {requireAuth} = require('../../../middleware/authmiddleware');
 const router = express.Router();
 
 
 
 //router for updation/addtion of symptoms
 
-router.post('/addthesymptoms',async(req, res) => {
+router.post('/addthesymptoms',requireAuth,async(req, res) => {
     console.log(req.body);
     const user = {
         symptomsname:req.body.isymname,
@@ -25,7 +25,7 @@ router.post('/addthesymptoms',async(req, res) => {
 });
 
 //router for viewing medicines
-router.post('/viewsymptoms', async(req, res) => {
+router.post('/viewsymptoms', requireAuth, async(req, res) => {
     console.log(req.body);
     //database work-> get all the users from database...
     const user = {
@@ -45,7 +45,7 @@ router.post('/viewsymptoms', async(req, res) => {
     res.render('./SYMPTOMS/updatesympt',{users:alluser});
 });
 
-router.post('/deletethesymptom', async(req, res) => {
+router.post('/deletethesymptom', requireAuth, async(req, res) => {
     console.log(req.body);
    
     const user = {
@@ -65,7 +65,7 @@ router.post('/deletethesymptom', async(req, res) => {
 });
 
 
-router.post('/updatingsymptom',async(req, res) => {
+router.post('/updatingsymptom', requireAuth, async(req, res) => {
    
     console.log(req.body);
 
@@ -94,7 +94,7 @@ router.post('/updatingsymptom',async(req, res) => {
 
 //letupdate the symptom now
 
-router.post('/letupdatesymptomdetails',async(req, res) => {
+router.post('/letupdatesymptomdetails', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         id: req.body.ismyid,
@@ -119,7 +119,7 @@ router.post('/letupdatesymptomdetails',async(req, res) => {
 
 //viewing all symptoms
 
-router.post('/viewingallsymptom',async(req, res) => {
+router.post('/viewingallsymptom', requireAuth, async(req, res) => {
 
     const alluser=await new Promise((resolve, reject)=> {
         const query = `SELECT idsymptoms,symptomsname,symptomscategory FROM symptoms`;

@@ -1,8 +1,9 @@
 const express = require('express');
 const connection = require('../db/db');
+const {requireAuth} = require('../middleware/authmiddleware');
 const router = express.Router();
 
-router.get('/viewrequest', async(req, res) => {
+router.get('/viewrequest', requireAuth, async(req, res) => {
     const alluser=await new Promise((resolve, reject)=> {
         const id = 0;
         const query = `SELECT * FROM signindoc where registered=?`;
@@ -14,7 +15,7 @@ router.get('/viewrequest', async(req, res) => {
     res.render('doctorrequest',{users:alluser});
 });
 
-router.post('/rejectdoctor', async (req, res) => {
+router.post('/rejectdoctor', requireAuth, async (req, res) => {
     console.log(req.body);
     await new Promise((resolve, reject)=> {
         const query = `DELETE FROM signindoc WHERE idsignindoc=?`;
@@ -28,7 +29,7 @@ router.post('/rejectdoctor', async (req, res) => {
 
 
 
-router.post('/acceptdoctor', async (req, res) => {
+router.post('/acceptdoctor', requireAuth, async (req, res) => {
     console.log(req.body);
     
     const alluser=await new Promise((resolve, reject)=> {

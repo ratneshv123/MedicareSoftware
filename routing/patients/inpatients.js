@@ -1,5 +1,6 @@
 const express = require('express');
 const connection = require('../../db/db');
+const {requireAuth} = require('../../middleware/authmiddleware');
 const router = express.Router();
 
 var session = '';
@@ -42,7 +43,7 @@ router.get('/welcomeuser', async(req,res)=>{
     res.render('./PATIENT/welcomeuser', {value1:alluser1, value2: alluser2, value3: alluser3,value4: alluser4});
 });
 
-router.get('/viewdocforpat', async(req,res)=>{
+router.get('/viewdocforpat', requireAuth, async(req,res)=>{
     const alluser1 = await new Promise((resolve, reject) => {
         const query = `select * from doctors`;
         connection.query(query, (err, result) => {
@@ -61,7 +62,7 @@ router.get('/viewdocforpat', async(req,res)=>{
     res.render('./PATIENT/ViewDocPatient',{users:alluser1,value4:alluser4});
 });
 
-router.get('/yourprofile', async(req,res)=>{
+router.get('/yourprofile', requireAuth, async(req,res)=>{
     const alluser1 = await new Promise((resolve, reject) => {
         const query = `select * from signin where username = ?`;
         connection.query(query,session, (err, result) => {
@@ -80,12 +81,12 @@ router.get('/yourprofile', async(req,res)=>{
     res.render('./PATIENT/viewpatient',{value1:alluser1,value4: alluser4});
 });
 
-router.post('/completeprofile',(req,res)=>{
+router.post('/completeprofile', requireAuth, (req,res)=>{
     var message='';
     res.render('./PATIENT/completeprofile',{message:message});
 })
 
-router.post('/donecompleting', async(req,res)=>{
+router.post('/donecompleting', requireAuth, async(req,res)=>{
     const user = {
         age: req.body.iage,
         gender: req.body.igender,

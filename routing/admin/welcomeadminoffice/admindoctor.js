@@ -1,10 +1,11 @@
 const express = require('express');
 const connection = require('../../../db/db');
+const {requireAuth} = require('../../../middleware/authmiddleware');
 const router = express.Router();
 
 //routes for updation/addition of doctor
 
-router.post('/addthedoctor', async(req, res) => {
+router.post('/addthedoctor', requireAuth, async(req, res) => {
     console.log(req.body);
     const user = {
         doctorsname: req.body.idrname,
@@ -28,7 +29,7 @@ router.post('/addthedoctor', async(req, res) => {
     //res.send('success'); 
 });
 
-router.post('/viewingdr', async (req, res) => {
+router.post('/viewingdr', requireAuth, async (req, res) => {
     const user = {
         sortby: req.body.iprefname
     };
@@ -61,7 +62,7 @@ router.post('/viewingdr', async (req, res) => {
 
 //router for viewthedr
 
-router.post('/viewthedr', async (req, res) => {
+router.post('/viewthedr', requireAuth, async (req, res) => {
     const user = {
         name: req.body.iname,
         value:req.body.ivalue
@@ -88,7 +89,7 @@ router.post('/viewthedr', async (req, res) => {
 
 //router for updation and deletion
 
-router.post('/updatingdr', async (req, res) => {
+router.post('/updatingdr', requireAuth, async (req, res) => {
     const user = {
         sortby: req.body.iprefname
     };
@@ -131,7 +132,7 @@ router.post('/updatingdr', async (req, res) => {
 
 //routes for updationofdoctors
 
-router.post('/updatethedr', async (req, res) => {
+router.post('/updatethedr', requireAuth, async (req, res) => {
     const user = {
         name: req.body.iname,
         value:req.body.ivalue
@@ -165,7 +166,7 @@ router.post('/updatethedr', async (req, res) => {
 
 //routes for updating doctor details
 
-router.post('/updatingdoctordetail', (req, res) => {
+router.post('/updatingdoctordetail', requireAuth, (req, res) => {
     console.log(req.body);
     const user = {
         id: req.body.doctorid,
@@ -181,7 +182,7 @@ router.post('/updatingdoctordetail', (req, res) => {
 
 //router for doctorupdatethe details 
 
-router.post('/letupdatedoctordetails',async(req, res) => {
+router.post('/letupdatedoctordetails', requireAuth,async(req, res) => {
     console.log(req.body);
     const user = {
         id: req.body.id,
@@ -207,7 +208,7 @@ router.post('/letupdatedoctordetails',async(req, res) => {
 });
 
 
-router.post('/deletethedoctor', async(req, res) => {
+router.post('/deletethedoctor', requireAuth, async(req, res) => {
 
     console.log(req.body);
 

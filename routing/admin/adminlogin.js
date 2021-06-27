@@ -1,15 +1,15 @@
 const express = require('express');
 const connection = require('../../db/db');
-const bcrypt = require('bcryptjs');
 const {createToken} = require('../../models/user');
+const { requireAuth } = require('../../middleware/authmiddleware');
 const router = express.Router();
 
-router.post('/adminoffice', (req, res) => {
+router.get('/adminoffice', (req, res) => {
     var message = '';
     res.render('./ADMIN/adminlogin',{message:message}); 
 });
 
-router.get('/welcomeadmin', (req, res) => {
+router.get('/welcomeadmin', requireAuth, (req, res) => {
     var message = '';
     res.render('./ADMIN/inadmin',{message:message}); 
 });
