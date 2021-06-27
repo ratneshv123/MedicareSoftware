@@ -64,7 +64,7 @@ router.post('/signindoc', async (req, res) => {
     };
 
     const uservalue = await new Promise((resolve,reject)=>{
-        const query = `Select * from signindoc where username = ?`;
+        const query = `Select * from doctors where doctorsusername = ?`;
         connection.query(query,user.name,(err, result)=> {
             if (err)    reject(new Error('Something failed (Record Updation) :'+err));
             resolve (result);
@@ -90,7 +90,7 @@ router.post('/signindoc', async (req, res) => {
                 bcrypt.compare(user.password,result[0].doctorspassword, (err, result) => {
                     if (result === true) {
                         console.log('success');
-                        const token = createToken(uservalue[0].idsignindoc);
+                        const token = createToken(uservalue[0].doctorsid);
                         res.cookie('jwt',token,{httpOnly:true,maxAge: 1000*2*24*60*60});
                         res.render('./DOCTORMODULE/doctorspage.ejs',{message:alluser[0].doctorsname});
                     } 

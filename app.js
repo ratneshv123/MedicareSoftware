@@ -28,7 +28,7 @@ app.use(signup);
 app.use(doctor);
 app.use(adminlogin);
 app.use(inadmin);
-app.use(inpatients);
+app.use(inpatients); 
 app.use(admindoctor);
 app.use(adminmedicine);
 app.use(adminsymptoms);
