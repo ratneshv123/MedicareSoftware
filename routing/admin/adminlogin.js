@@ -1,5 +1,6 @@
 const express = require('express');
 const connection = require('../../db/db');
+const Joi = require('joi');
 const {createToken} = require('../../models/user');
 const { requireAuth } = require('../../middleware/authmiddleware');
 const router = express.Router();
@@ -16,6 +17,31 @@ router.get('/welcomeadmin', requireAuth, (req, res) => {
 
 router.post('/welcomeadmin', async (req, res) => {
     console.log(req.body);
+
+          //validation starts from here
+
+    
+          const schema = Joi.object({
+            Username:Joi.string().min(3).max(30).required(),
+            Password: Joi.string().min(1).max(30)
+        });
+        
+        const { error, value } = schema.validate({
+            Username: req.body.iusername,
+            Password: req.body.ipassword
+        });
+    
+        if (error != undefined)   
+        {
+            console.log(error);
+            var success = "";
+            res.render('./ADMIN/adminlogin', { message: error.details[0].message,success});
+            // res.status(400).send(error.details[0].message);
+            return;    
+        }
+    
+        //validation end here 
+
     var message='';    
     const user = {
         name: req.body.iusername,
