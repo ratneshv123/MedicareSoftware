@@ -33,7 +33,7 @@ router.post('/welcomeadmin', async (req, res) => {
     
         if (error != undefined)   
         {
-            console.log(error);
+            console.log(error); 
             var success = "";
             res.render('./ADMIN/adminlogin', { message: error.details[0].message,success});
             // res.status(400).send(error.details[0].message);
