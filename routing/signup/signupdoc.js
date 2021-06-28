@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const Joi = require('joi');
 var nodemailer = require('nodemailer');
 const connection = require('../../db/db');
 const {createToken} = require('../../models/user');
@@ -12,7 +13,41 @@ router.get('/signupdoc', (req,res)=>{
 });
 
 router.post('/signupdocform', async(req, res) => {
-    console.log(req.body);       
+    console.log(req.body);
+    
+
+    const schema = Joi.object({
+        Name:Joi.string().required(),
+        Email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).min(11).max(100).required(),
+        Mobileno: Joi.string().min(10).max(10).required(),
+        Drspeciality: Joi.string().required(),
+        Address:Joi.string().required(),
+        username:Joi.string().min(3).max(30).required(),
+        Password: Joi.string().min(3).max(30)
+    });
+    
+    const { error, value } = schema.validate({
+        Name: req.body.ifname,
+        Email: req.body.iemail,
+        Mobileno: req.body.imobno,
+        Drspeciality: req.body.idrspeciality,
+        Address: req.body.iaddress,
+        username: req.body.iusername,
+        Password: req.body.ipassword
+    });
+
+    if (error != undefined)   
+    {
+        console.log(error);
+        var success = "";
+        res.render('signupdoc', { message: error.details[0].message,success});
+        // res.status(400).send(error.details[0].message);
+        return;    
+    }
+
+//validation end here 
+
+
     const user = { 
         signindocname: req.body.ifname,
         signindocemail: req.body.iemail,
@@ -50,6 +85,33 @@ router.post('/signupdocform', async(req, res) => {
 
 router.post('/signindoc', async (req, res) => {
     console.log(req.body);
+
+
+    //validation start from here 
+
+    const schema = Joi.object({
+        Username:Joi.string().min(3).max(30).required(),
+        Password: Joi.string().min(1).max(30)
+    });
+    
+    const { error, value } = schema.validate({
+        Username: req.body.iusername,
+        Password: req.body.ipassword
+    });
+
+    if (error != undefined)   
+    {
+        console.log(error);
+        var success = "";
+        res.render('home', { message: error.details[0].message,success});
+        // res.status(400).send(error.details[0].message);
+        return;    
+    }
+
+//validation end here 
+
+
+
     const alluser= await new Promise((resolve, reject) => {
         const query = `select doctorsname  from doctors where doctorsusername=?`;
         connection.query(query,req.body.iusername,(err, result) => {

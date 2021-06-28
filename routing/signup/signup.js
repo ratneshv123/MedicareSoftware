@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const Joi = require('joi');
 const connection = require('../../db/db');
 const {createToken} = require('../../models/user');
 const router = express.Router();
@@ -10,7 +11,41 @@ router.get('/signup', (req,res)=>{
 });
 
 router.post('/signupform', async(req, res) => {
-    console.log(req.body);    
+    console.log(req.body);
+    
+
+    //validation starts from here
+
+    
+    const schema = Joi.object({
+        FirstName: Joi.string().required(),
+        LastName:Joi.string().required(),
+        Email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).min(11).max(100).required(),
+        Mobileno: Joi.string().min(10).max(10).required(),
+        username:Joi.string().min(3).max(30).required(),
+        Password: Joi.string().min(3).max(30)
+    });
+    
+    const { error, value } = schema.validate({
+        FirstName: req.body.ifname,
+        LastName: req.body.ilname,
+        Email: req.body.iemail,
+        Mobileno: req.body.imobno,
+        username: req.body.iusername,
+        Password: req.body.ipassword
+    });
+
+    if (error != undefined)   
+    {
+        console.log(error);
+        var success = "";
+        res.render('signup', { message: error.details[0].message,success});
+        // res.status(400).send(error.details[0].message);
+        return;    
+    }
+
+//validation end here 
+
     const user = { 
         firstname: req.body.ifname,
         middlename: req.body.imname,
@@ -48,6 +83,32 @@ router.post('/signupform', async(req, res) => {
 
 router.post('/signin', async (req, res) => {
     console.log(req.body);
+
+
+      //validation starts from here
+
+    
+      const schema = Joi.object({
+        Username:Joi.string().min(3).max(30).required(),
+        Password: Joi.string().min(1).max(30)
+    });
+    
+    const { error, value } = schema.validate({
+        Username: req.body.iusername,
+        Password: req.body.ipassword
+    });
+
+    if (error != undefined)   
+    {
+        console.log(error);
+        var success = "";
+        res.render('home', { message: error.details[0].message,success});
+        // res.status(400).send(error.details[0].message);
+        return;    
+    }
+
+    //validation end here 
+
     var message='';    
     const user = {
         name: req.body.iusername,
